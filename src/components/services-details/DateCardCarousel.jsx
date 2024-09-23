@@ -1,98 +1,171 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Card, CardContent, Typography, Select, MenuItem } from '@mui/material';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { format, addMonths, eachDayOfInterval, startOfToday, endOfYear } from 'date-fns';
-import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
+"use client";
+import React, { useState, useEffect, useRef } from 'react';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import isToday from 'dayjs/plugin/isToday';
+import { useBookingForm } from './BookingFormContext';
+
+// Extend dayjs with the plugins
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(isToday);
 
 const DateCardCarousel = () => {
-  const [selectedDate, setSelectedDate] = useState(startOfToday());
+  const { selectedYear, setSelectedYear,
+    selectedMonth, setSelectedMonth,
+    selectedDate, setSelectedDate,
+    selectedDateRef, today } = useBookingForm();
   const [dates, setDates] = useState([]);
-  const [month, setMonth] = useState(format(startOfToday(), 'MMMM yyyy'));
+  const [dropdownOptions, setDropdownOptions] = useState([]);
+  const [displayMode, setDisplayMode] = useState('dates'); // 'years', 'months'
+  const [isOpen, setIsOpen] = useState(false); // To manage dropdown visibility
 
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const years = Array.from({ length: 9 }, (_, i) => dayjs().year() - 4 + i);
 
   useEffect(() => {
-    const today = startOfToday();
-    const yearEnd = endOfYear(today);
-    
-    // Convert to user's local timezone
-    const localToday = utcToZonedTime(today, timeZone);
-    const localYearEnd = utcToZonedTime(yearEnd, timeZone);
-    
-    const allDates = eachDayOfInterval({
-      start: localToday,
-      end: localYearEnd,
-    });
-    
-    setDates(allDates);
-  }, []);
+    if (selectedYear && selectedMonth != null) {
+      const startOfMonth = dayjs(`${selectedYear}-${selectedMonth + 1}-01`);
+      const endOfMonth = startOfMonth.endOf('month');
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+      const allDates = [];
+      let current = startOfMonth;
+
+      while (current.isBefore(endOfMonth) || current.isSame(endOfMonth, 'day')) {
+        allDates.push(current);
+        current = current.add(1, 'day');
+      }
+
+      setDates(allDates);
+    }
+  }, [selectedYear, selectedMonth]);
+
+  useEffect(() => {
+    if (displayMode === 'years') {
+      setDropdownOptions(
+        years
+          .filter(year => dayjs().year() <= year) // Filter out past years
+          .map(year => ({
+            value: year,
+            label: year.toString()
+          }))
+      );
+    } else if (displayMode === 'months') {
+      setDropdownOptions(
+        months
+          .filter((_, index) => index >= dayjs().month() || selectedYear > dayjs().year()) // Filter out past months
+          .map((month, index) => ({
+            value: selectedYear > today.year() ? index : index + dayjs().month(),
+            label: month
+          }))
+      );
+    }
+  }, [displayMode, selectedYear]);
+
+  const handleSelectionChange = (value) => {
+    if (displayMode === 'years') {
+      const year = parseInt(value, 10);
+      setSelectedYear(year);
+      setDisplayMode('months');
+    } else if (displayMode === 'months') {
+      const month = parseInt(value, 10);
+      setSelectedMonth(month);
+      setDisplayMode('dates');
+      if(selectedYear === today.year()){
+        setSelectedDate(today)
+      }
+      setIsOpen(false); // Close dropdown after selection
+    }
   };
 
-  const handleMonthChange = (event) => {
-    setMonth(event.target.value);
+  const handleDropdownToggle = () => {
+    setIsOpen(prev => !prev);
+    if (!isOpen) {
+      setDisplayMode('years'); // Reset to show years when dropdown opens
+    }
   };
 
-  const formattedDates = dates.map(date => utcToZonedTime(date, timeZone));
+  const handleDateClick = (date) => {
+    if (!date.isBefore(today)) {
+      setSelectedDate(date); // Update selected date
+    }
+  };
+
+  useEffect(() => {
+    // Always scroll to the selected date's card when the component is rendered or updated
+    if (selectedDateRef.current) {
+      selectedDateRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [dates, selectedDate]);
+
+  const selectedLabel = displayMode === 'dates'
+    ? `${months[selectedMonth]} ${selectedYear}`
+    : displayMode === 'months'
+      ? `Select Month`
+      : `Select Year`;
 
   return (
-    <Box className="w-full max-w-screen-lg mx-auto p-4">
-      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-        <Select
-          value={month}
-          onChange={handleMonthChange}
-          IconComponent={ArrowForwardIosIcon}
-          sx={{
-            border: 'none',
-            '& .MuiSelect-select': {
-              paddingRight: 0,
-            },
-            '& .MuiOutlinedInput-notchedOutline': {
-              border: 'none',
-            },
-            '& .MuiSelect-icon': {
-              marginLeft: '0.2rem',
-            },
-          }}
-          disableUnderline
+    <div className="w-full max-w-screen-lg mx-auto p-4 bg-white">
+    
+        <button
+          onClick={handleDropdownToggle}
+          className="text-left text-regular-normal-medium font-bold-500"
         >
-          {/* Populate month options dynamically */}
-          <MenuItem value={format(startOfToday(), 'MMMM yyyy')}>{format(startOfToday(), 'MMMM yyyy')}</MenuItem>
-          <MenuItem value={format(addMonths(startOfToday(), 1), 'MMMM yyyy')}>{format(addMonths(startOfToday(), 1), 'MMMM yyyy')}</MenuItem>
-          {/* Add more options as needed */}
-        </Select>
-      </Box>
+          {selectedLabel}
+        </button>
 
-      <Box sx={{ overflowX: 'auto', display: 'flex', gap: 2 }}>
-        {formattedDates.map((date) => (
-          <Card
-            key={date}
-            className="rounded-lg"
-            sx={{
-              minWidth: '100px',
-              textAlign: 'center',
-              backgroundColor: selectedDate.getTime() === date.getTime() ? '#1976d2' : '#fff',
-              color: selectedDate.getTime() === date.getTime() ? '#fff' : '#000',
-              border: selectedDate.getTime() === date.getTime() ? '2px solid #1976d2' : '1px solid #e0e0e0',
-              cursor: selectedDate.getTime() === date.getTime() ? 'default' : 'pointer',
-            }}
-            onClick={() => handleDateChange(date)}
-            disabled={date < startOfToday()}
-          >
-            <CardContent>
-              <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-                {format(date, 'EEE')} {/* Display day abbreviation */}
-              </Typography>
-              <Typography variant="body2">
-                {format(date, 'dd')} {/* Display date */}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
-    </Box>
+        {isOpen && (
+          <div className="z-10 bg-white rounded-md mt-2 w-full max-h-60 overflow-y-auto">
+            <div className={`flex flex-wrap gap-2 ${displayMode === 'years' ? 'w-full' : ''}`}>
+              {dropdownOptions.map(option => (
+                <div
+                  key={option.value}
+                  className={`flex-1 min-w-[100px] p-2 cursor-pointer text-center rounded-lg ${(displayMode === 'years' && option.value === selectedYear) ||
+                    (displayMode === 'months' && option.value === selectedMonth)
+                    ? 'bg-[#014899] text-white'
+                    : 'hover:bg-gray-200'
+                    }`}
+                  onClick={() => handleSelectionChange(option.value)}
+                >
+                  {option.label}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      
+
+      {displayMode === 'dates' && (
+        <div className="overflow-x-auto flex gap-2 mt-4">
+          {dates.map((date) => (
+            <div
+              key={date.format()}
+              ref={date.isSame(selectedDate, 'day') ? selectedDateRef : null} // Assign ref to selected date
+              className={`min-w-[61px] h-[82px] text-center cursor-pointer rounded-lg border-bg-secondary ${date.isSame(selectedDate, 'day')
+                ? 'bg-[#014899] text-white border-2 border-[#014899]'
+                : 'bg-white text-black border border-gray-300'
+                } ${date.isBefore(today) ? 'cursor-not-allowed bg-slate-200' : ''}`}
+              onClick={() => handleDateClick(date)}
+            >
+              <div className={`p-2 ${date.isBefore(today) ? 'bg-slate-200' : ''}`}>
+                <div className="font-bold-500 text-title-6 text-text-inactive">
+                  {date.format('ddd')} {/* Display day abbreviation */}
+                </div>
+                <div className="text-title-3 font-600">
+                  {date.format('DD')} {/* Display date */}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 

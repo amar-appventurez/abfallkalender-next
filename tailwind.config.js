@@ -7,6 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        'stepper-bottom-nav-border': '1px 1px 0px 1px', // Custom border width
+      },
+      borderRadius: {
+        'stepper-border-nav-radius': '8px 8px 0px 0px', // Custom border radius
+
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -33,7 +40,9 @@ module.exports = {
       'blue-200': '#9AC9FE',
       'red-200': '#FBBEBD',
       "white": "white",
-      "worms-brand-2":"#014899"
+      "slate-200":"#E0E0E9",
+      "worms-brand-2": "#014899",
+      "worms-blue": "#015FCB"
     },
     fontSize: {
       'title-3': ['24px', '32px'],
@@ -45,12 +54,26 @@ module.exports = {
       'title-6': ['12px', '18px'],
       'title-7': ['12px', '12px'],
       'header-description': ['14px', '22px'],
-      'header-description-1': ['16px', '20px'],
+      '': ['16px', '20px'],
+      "small-tight-regular": ['14px', '20px'],
+      "large-none-semibold": ["18px", "18px"],
+      "regular-normal-medium":["16px","24px"]
+
     },
     fontWeight: {
       normal: 400,
       semiBold: 600,
-      'bold-500': 500
+      'bold-500': 500,
+      "bold-900": 900
+    },
+    height: {
+      "bottom-nav-button": '48px'
+    },
+    width: {
+      "bottom-nav-button": '343px',
+      "personal-deatils-form": "311px",
+      "fit-content": "fit-content",
+      "w-100": "100%"
     },
   },
   plugins: [],

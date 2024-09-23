@@ -1,5 +1,10 @@
 {
     "HomePage": {
+      "good-morning": "Guten Morgen, ",
+      "all-in-one":"All-in-one-Online-Service der Stadtverwaltung Worms",
+     "search-placeholder":"Suchen Sie hier nach Service...",
+      "functional-unit": "Funktionseinheitendienst",
+      "service-office":"Servicebüro",
       "title": "Finden Sie Ihr Thema",
       "description": "Aktuelle Nachrichten aus der Stadt Worms",
       "latest-news": "Neueste Nachrichten",
@@ -40,8 +45,52 @@
     },
     "BottomNavigation": {
       "home": "Startseite",
-      "news": "Nachrichten",
-      "subscribe": "Abonnieren"
-    }
+      "services": "Dienstleistungen",
+      "booking": "Meine Buchung"
+    },
+    "Booking":{
+      "my-bookings":"Meine Buchungen",
+      "all":"Alle",
+      "upcoming":"Demnächst",
+      "completed":"Vollendet"
+    },
+    "Services":{
+      "all": "Alle",
+      "all-lowercase": "alle",
+      "service-categories": "Dienstkategorien",
+      "pass-register": "Pass-/Registrierungssystem",
+      "fee": "Gebühren"
+    },
+    "ServiceDetails": {
+      "apply-passport": "Für einen Pass beantragen",
+      "service-details": "Dienstleistungsdetails",
+      "no-service": "Keine Dienstleistungsdetails verfügbar",
+      "select-location": "Standort auswählen"
+    },
+    "Location":{
+        "your-location": "Ihr Standort",
+        "date-time": "Ihr Datum und Ihre Uhrzeit"
+      
+    },
+  "MultiStep": {
+    "confirmed-message": "Termin bestätigt!",
+    "confirm-line": "Ihr Termin wurde erfolgreich vereinbart.",
+    "select-date-time": "Datum und Uhrzeit auswählen",
+    "personal-details": "Persönliche Angaben",
+    "go-my-bookings": "Zu meinen Buchungen gehen",
+    "select-slot-time": "Slot-Zeit auswählen",
+    "reserve": "Reservieren",
+    "next": "Weiter",
+    "select-location": "Standort auswählen"
+  },
+  "Personal": {
+    "first-name": "Vorname",
+    "family-name": "Nachname",
+    "email": "E-Mail",
+    "email-repeat": "E-Mail Wiederholung",
+    "phone": "Telefonnummer",
+     "declaration": "Ich willige ein, dass meine personenbezogenen Daten zum Zweck der Terminbuchung und -bearbeitung von der verantwortlichen Stelle verarbeitet werden. Datenschutzhinweise zur Einwilligungserklärung & Datenschutz & BEDINGUNGEN",
+    "submit": "Absenden"
+  }
   }
   

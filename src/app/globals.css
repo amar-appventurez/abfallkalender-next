@@ -34,7 +34,7 @@ body {
 
 @font-face {
   font-family: "Figtree";
-  src: url("/public/fonts/Figtree-Regular.ttf") format("ttf");
+  src: url("/public/fonts/Figtree-Regular.ttf") format("truetype");
   font-style: normal;
 }
 

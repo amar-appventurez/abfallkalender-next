@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Card, CardActionArea, Tabs, Tab } from '@mui/material';
-import { fetchSlotTimings } from '@/actions/fetchSlotTimings';
+import { fetchSlotTimings } from '../../actions/fetchSlotTimings';
+import {useBookingForm} from './BookingFormContext'
 
 const TimingTabs = () => {
   const [selectedTiming, setSelectedTiming] = useState(0);
-  const [selectedSlot, setSelectedSlot] = useState(null); // Track only one selected slot
-  const [timings, setTimings] = useState([]);
+
+
+  const {    timings, setTimings,selectedSlot, setSelectedSlot} =useBookingForm();
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const setSlotTimings = async () => {
@@ -25,11 +27,28 @@ const TimingTabs = () => {
 
   const handleSlotClick = (timingIndex, slotIndex) => {
     setSelectedTiming(timingIndex);
-    setSelectedSlot({ timingIndex, slotIndex });
+    setSelectedSlot({ timingIndex, slotIndex }); // Set both timingIndex and slotIndex
   };
 
   if (loading) {
-    return <>Loading...</>;
+    const timingsForSkeleton=[{slots:[1,2,3,4]},{slots:[1,2,3,4]},{slots:[1,2,3,4]},]
+    return <div className="container mx-auto px-4 py-8 max-w-9xl bg-bg-secondary flex flex-col gap-[24px]">
+    {timingsForSkeleton.map((timing, timingIndex) => (
+      <div key={timingIndex} className='flex flex-col gap-[16px]'>
+        <span className="font-bold-500 text-header-description-1 w-[100px] animate-pulse bg-white h-[22px]">{""}</span>
+        <div className="flex flex-wrap gap-[15px]">
+          {timing.slots.map((slot, slotIndex) => (
+            <div
+              key={slotIndex} // Ensure unique key for each slot
+              className={`w-[104px] h-[42px] px-[16px] py-[11px] rounded-lg cursor-pointer flex items-center justify-center bg-white animate-pulse`}
+            >
+              <span className="text-center text-header-description-1 w-[50px] animate-pulse">{""}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>;
   }
 
   if (timings.length === 0) {
@@ -37,43 +56,33 @@ const TimingTabs = () => {
   }
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '900px', mx: 'auto', p: 4 }}>
+    <>
+    
+    <div className="container mx-auto px-4 py-8 max-w-9xl bg-bg-secondary flex flex-col gap-[24px]">
       {timings.map((timing, timingIndex) => (
-        <Box key={timing.id} mb={4}>
-          <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 2 }}>
-            {timing.period}
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+        <div key={timing.id} className='flex flex-col gap-[16px]'>
+          <span className="font-bold-500 text-header-description-1">{timing.period}</span>
+          <div className="flex flex-wrap gap-[15px]">
             {timing.slots.map((slot, slotIndex) => (
-              <Card
-                key={slot}
+              <div
+                key={slotIndex} // Ensure unique key for each slot
+                className={`w-[104px] h-[42px] px-[16px] py-[11px] rounded-lg cursor-pointer flex items-center justify-center 
+                  ${
+                    selectedSlot?.timingIndex === timingIndex &&
+                    selectedSlot?.slotIndex === slotIndex
+                      ? 'text-white bg-worms-brand-2'
+                      : 'bg-white text-black border-gray-300'
+                  }`}
                 onClick={() => handleSlotClick(timingIndex, slotIndex)}
-                sx={{
-                  minWidth: 100,
-                  borderRadius: 2,
-                  boxShadow: selectedSlot?.timingIndex === timingIndex && selectedSlot.slotIndex === slotIndex
-                    ? '0px 0px 0px 2px #1976d2 inset'
-                    : '0px 0px 0px 1px #e0e0e0 inset',
-                  backgroundColor: selectedSlot?.timingIndex === timingIndex && selectedSlot.slotIndex === slotIndex
-                    ? '#e3f2fd'
-                    : '#fff',
-                  '&:hover': {
-                    boxShadow: '0px 0px 0px 2px #1976d2 inset',
-                    cursor: 'pointer',
-                  },
-                }}
               >
-                <CardActionArea sx={{ padding: 2, borderRadius: 2 }}>
-                  <Typography variant="body2" align="center">
-                    {slot}
-                  </Typography>
-                </CardActionArea>
-              </Card>
+                <span className="text-center text-header-description-1">{slot}</span>
+              </div>
             ))}
-          </Box>
-        </Box>
+          </div>
+        </div>
       ))}
-    </Box>
+    </div>
+    </>
   );
 };
 

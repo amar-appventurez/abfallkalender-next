@@ -1,8 +1,10 @@
 import React from 'react'
+import MyBookings from '../../components/book-appointment/MyBookings'
 
 const pages = () => {
   return (
-    <div>pages</div>
+    
+    <MyBookings></MyBookings>
   )
 }
 

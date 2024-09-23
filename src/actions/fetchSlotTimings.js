@@ -1,5 +1,7 @@
 "server only"
 
+import { Endpoints } from "../constants/Endpoint";
+
 export const fetchSlotTimings = async () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -7,20 +9,67 @@ export const fetchSlotTimings = async () => {
         {
           id: 1,
           period: 'Morning 7:00-8:00',
-          slots: ['7:00-7:15', '7:15-7:30', '7:30-7:45', '7:45-8:00'],
+          slots: ['7:00', '7:30', '7:45', '7:50'],
         },
         {
           id: 2,
           period: 'Afternoon 12:00-1:00',
-          slots: ['12:00-12:15', '12:15-12:30', '12:30-12:45', '12:45-1:00'],
+          slots: ['12:00', '12:15', '12:30', '12:45'],
         },
         {
           id: 3,
           period: 'Evening 5:00-6:00',
-          slots: ['5:00-5:15', '5:15-5:30', '5:30-5:45', '5:45-6:00'],
+          slots: ['5:00', '5:15', '5:30', '5:45'],
         },
       ];
       resolve(timings);
-    }, 5000);
+    }, 0);
   });
 };
+
+
+export const fetchBookingDetails = async (page, status = 0, size = 3) => {
+  const queryParams = new URLSearchParams({
+    page,
+    size,
+    ...(status !== 0 && { status }) // Add status only if it's not 0
+  });
+
+  const url = `${Endpoints.baseUrl}/booking?${queryParams.toString()}`;
+ 
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${Endpoints.token}`,
+        'Content-Type': 'application/json',
+      },
+      // cache: 'force-cache',
+    });
+
+    
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+   
+      return data.result.rows;
+    } else {
+      throw new Error("Invalid content-type. Expected JSON.");
+    }
+
+  } catch (error) {
+    console.error("Error in fetchBookingDetails:", error);
+    return []; // Return empty array on error
+  }
+};
+
+
+
+
+

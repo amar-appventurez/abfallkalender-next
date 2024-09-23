@@ -1,7 +1,10 @@
 {
     "HomePage": {
-      "title": "Finden Sie Ihr Thema",
-      "description": "Aktuelle Nachrichten aus der Stadt Worms",
+      "good-morning": "Good Morning, ",
+      "all-in-one":"All-in-one online service of Worms city administration",
+     "search-placeholder":"Search Service here...",
+      "functional-unit": "Functional Unit Service",
+      "service-office":"Service Office",
       "latest-news": "Neueste Nachrichten",
       "see-all-news": "Alle Neuigkeiten anzeigen",
       "see-all": "Alle ansehen",
@@ -39,9 +42,52 @@
       "filter-new": "Neu"
     },
     "BottomNavigation": {
-      "home": "Startseite",
-      "news": "Nachrichten",
-      "subscribe": "Abonnieren"
+      "home": "Home",
+      "services": "Services",
+      "booking": "My Booking"
+    },
+    "Booking":{
+      "my-bookings":"My Bookings",
+      "all":"All",
+      "upcoming":"Upcoming",
+      "completed":"Completed"
+    },
+    "Services":{
+      "all":"All",
+      "all-lowercase":"all",
+      "service-categories":"Service Categories",
+      "pass-register":" Passport/registration System",
+      "fee":"Fees"
+    },
+    "ServiceDetails":{
+      "apply-passport":"Apply for a passport",
+      "service-details":"Service Details",
+      "no-service":"No service details available",
+      "select-location":"Select Location"
+    },
+    "Location":{
+      "your-location": "Your Location",
+      "date-time":"Your date and time"
+    },
+    "MultiStep":{
+      "confirmed-message":"Appointment Confirmed!",
+      "confirm-line":"Your appointment has been successfully scheduled.",
+      "select-date-time":"Select date and time",
+      "personal-details":"Personal Details",
+      "go-my-bookings":"Go to My Bookings",
+      "select-slot-time":"Select slot timings",
+      "reserve":"Reserve",
+      "next":"Next",
+      "select-location":"Select Location"
+    },
+    "Personal":{
+      "first-name":"First Name",
+      "family-name":"Family Name",
+      "email":"Email",
+      "email-repeat":"Email Repetition",
+      "phone":"Telephone No",
+      "declaration":"I consent to my personal data collected for the purpose of booking and processing appointments being processed by the responsible party.  Data protection information on the declaration of consent & Data protection & CONDITIONS",
+      "submit":"Submit"
     }
   }
   

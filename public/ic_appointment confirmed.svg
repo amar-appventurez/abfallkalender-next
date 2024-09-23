@@ -1,0 +1,14 @@
+<svg width="101" height="100" viewBox="0 0 101 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ic_appointment confirmed">
+<circle id="Ellipse 1536" cx="50.5" cy="50" r="50" fill="#014899"/>
+<g id="Group 29">
+<g id="Group 30">
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M31.5 29.4878C27.0817 29.4878 23.5 33.0695 23.5 37.4878V40.9512H69.5V37.4878C69.5 33.0695 65.9183 29.4878 61.5 29.4878H31.5ZM69.5 44.9512H23.5V61.878C23.5 66.2963 27.0817 69.878 31.5 69.878H61.5C65.9183 69.878 69.5 66.2963 69.5 61.878V44.9512Z" fill="white"/>
+<path id="Line 16" d="M36.9634 25L36.9634 33.9756" stroke="#67ADFE" stroke-width="4" stroke-linecap="round"/>
+<path id="Line 17" d="M56.0366 25L56.0366 33.9756" stroke="#67ADFE" stroke-width="4" stroke-linecap="round"/>
+</g>
+<circle id="Ellipse 1537" cx="65.5" cy="63" r="14" fill="#5FE8AD"/>
+<path id="Line 17_2" d="M60 63.5L64 67.7941L71 59.7941" stroke="#014899" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

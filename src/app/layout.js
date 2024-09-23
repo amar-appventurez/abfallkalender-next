@@ -1,12 +1,11 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
-import {NextIntlClientProvider} from 'next-intl';
-import {getLocale, getMessages} from 'next-intl/server';
-import BottomNav from "@/components/BottomNav";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
+import { cookies, headers } from 'next/headers';
+
 import 'slick-carousel/slick/slick.css'; // Slick carousel styles
 import 'slick-carousel/slick/slick-theme.css'; // Slick carousel theme styles
-
-const inter = Inter({ subsets: ["latin"] });
+import BottomNavHandler from "../components/BottomNavHandler"; // Client-side handler for BottomNav
 
 export const metadata = {
   title: "Booking Appointment",
@@ -15,16 +14,15 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const locale = await getLocale();
- 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
+
   return (
     <html lang={locale}>
-      <body className={inter.className}>
-      <NextIntlClientProvider messages={messages}>
+      <body>
+        <NextIntlClientProvider messages={messages}>
           {children}
-          <BottomNav />
+          {/* Pass the initial hideBottomNav state to the client handler */}
+          <BottomNavHandler/>
         </NextIntlClientProvider>
       </body>
     </html>

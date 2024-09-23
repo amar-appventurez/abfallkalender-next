@@ -1,6 +1,6 @@
 "use client";
 
-import HomeIcon from "@/components/icons/HomeIcon";
+import HomeIcon from "../components/icons/HomeIcon";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useTranslations } from "next-intl";
@@ -11,6 +11,7 @@ import MyBooking from "./icons/MyBooking";
 import CategoriesIcon from "./icons/CategoriesIcon";
 
 const BottomNav = () => {
+  const bottomNavTranslate=useTranslations('BottomNavigation')
   const [value, setValue] = useState(null);
   const path = usePathname();
 //   const t = useTranslations('BottomNavigation');
@@ -27,9 +28,9 @@ const BottomNav = () => {
       setValue(getValueFromPath(path));
     }
   }, [path])
-  return <></>
+  
   return (
-    <div className="fixed bottom-0 p-[10px] w-full">
+    <div className="fixed bottom-0 rounded-stepper-border-nav-radius w-[100%] border-stepper-bottom-nav-border border-border-color-1">
       <BottomNavigation
         showLabels
         value={value}
@@ -38,7 +39,7 @@ const BottomNav = () => {
         }}
       >
         <BottomNavigationAction
-          label={"Home"}
+          label={bottomNavTranslate('home')}
           icon={<HomeIcon color={value === 0 ? "#014899" : "#CDCDD6"} />}
           classes={{
             root: "text-text-inactive",
@@ -48,7 +49,7 @@ const BottomNav = () => {
           href="/home"
         />
         <BottomNavigationAction
-          label={"Services"}
+          label={bottomNavTranslate('services')}
           icon={<CategoriesIcon color={value === 1 ? "#014899" : "#CDCDD6"} />}
           classes={{
             root: "text-text-inactive",
@@ -58,7 +59,7 @@ const BottomNav = () => {
           href="/services"
         />
         <BottomNavigationAction
-          label={"My Booking"}
+          label={bottomNavTranslate('booking')}
           icon={<MyBooking color={value === 2 ? "#014899" : "#CDCDD6"} />}
           classes={{
             root: "text-text-inactive",

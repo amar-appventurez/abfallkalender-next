@@ -1,12 +1,12 @@
-import ServiceDetails from '@/components/book-appointment/ServiceDetails'
-import Header from '@/components/services-details/Header'
+import ServiceDetailsPage from '../../components/book-appointment/ServiceDetailsPage'
+
+import Header from '../../components/services-details/Header'
 import React from 'react'
 
-const page = () => {
-
+const page = async({params,searchParams}) => {
 
     return (
-        <ServiceDetails/>
+        <ServiceDetailsPage serviceId={parseInt(searchParams['serviceId'])}/>
     )
 }
 
