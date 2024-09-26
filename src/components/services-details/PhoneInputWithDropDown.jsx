@@ -47,7 +47,6 @@ const PhoneNumberInput = () => {
         onChange={(phone, countryData) => { 
           const countryCode = countryData.dialCode;
           const phoneWithOutCountry = phone.slice(countryCode.length);
-          console.log("Without count", phoneWithOutCountry)  
           setFormData((prev)=>{ return {...prev, phoneWithOutCountry, countryCode: `+${countryCode}`, phone} })
         }}
         inputClass="phone-input"

@@ -1,6 +1,8 @@
-"server only"
+"use server"
 
-import { Endpoints } from "../constants/Endpoint";
+import { Endpoints } from "../../constants/Endpoint";
+import { getUserSession } from "../../session";
+// import { getUserSession } from "../session";
 
 export const fetchSlotTimings = async () => {
   return new Promise((resolve, reject) => {
@@ -35,14 +37,14 @@ export const fetchBookingDetails = async (page, status = 0, size = 3) => {
     ...(status !== 0 && { status }) // Add status only if it's not 0
   });
 
-  const url = `${Endpoints.baseUrl}/booking?${queryParams.toString()}`;
- 
-
+  const url = `${Endpoints.baseUrl}/booking?${queryParams}`;
+  const token=(await getUserSession())?.userDetails?.token ?? Endpoints.token;
+  // console.log("Using token to call api",token)
   try {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${Endpoints.token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       // cache: 'force-cache',

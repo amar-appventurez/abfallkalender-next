@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Badge } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import {fetchLocationDetails} from "../../actions/fetchLocationDetails"
+import {fetchLocationDetails} from "../../app/actions/fetchLocationDetails"
 import {useBookingForm} from './BookingFormContext'
 import { useTranslations } from 'next-intl';
 

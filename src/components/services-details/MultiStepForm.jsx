@@ -10,7 +10,7 @@ import AppointmentCard from "../AppointmentCard"
 import DateCardCarousel from "./DateCardCarousel"
 import { BookingFormProvider, useBookingForm } from "./BookingFormContext";
 import MultiStepperBottomNextButton from './MultiStepperBottomNextButton'
-import { bookNewAppointment } from "../../actions/bookNewAppointment"
+import { bookNewAppointment } from "../../app/actions/bookNewAppointment"
 import { useTranslations } from "next-intl";
 // AppointmentConfirmed component for the final step
 const AppointmentConfirmed = ({ handleRedirectToBookings }) => {
@@ -33,7 +33,6 @@ const steps = ["Select Location", "Select Slot Timings", "Enter Personal Details
 
 const MultiStepForm = ({ serviceId, serviceName, serviceCategory }) => {
   const multiStepT= useTranslations('MultiStep');
- 
   const router = useRouter();
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = async (currentStep = undefined, formData = null) => {

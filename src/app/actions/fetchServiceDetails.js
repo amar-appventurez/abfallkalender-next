@@ -1,5 +1,6 @@
 "server only"
-import {Endpoints} from "../constants/Endpoint"
+import { getUserSession } from "../../session";
+import {Endpoints} from "../../constants/Endpoint"
 
 export const fetchServiceDetails = async (serviceId) => {
 
@@ -9,12 +10,12 @@ export const fetchServiceDetails = async (serviceId) => {
   });
 
   const url = `${Endpoints.baseUrl}/service?${params}`;
-
+  const token=(await getUserSession())?.userDetails?.token
   try {
     const response = await fetch(url, {
       method: 'GET', 
       headers: {
-        'Authorization': `Bearer ${Endpoints.token}`, // Ensure the token is correct
+        'Authorization': `Bearer ${token}`, // Ensure the token is correct
         'Content-Type': 'application/json', // Include if necessary
       },
       cache: 'force-cache', // Adjust based on need

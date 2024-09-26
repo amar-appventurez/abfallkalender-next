@@ -1,8 +1,7 @@
 "use client"; // Ensure this component is rendered on the client side
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Use next/navigation for app directory in Next.js 13+
-import { fetchServiceDetails } from '../../actions/fetchServiceDetails';
+import { useRouter } from 'next/navigation'; 
 import { Button } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../services-details/Header";
 import ServiceDetails from "../services-details/ServiceDetails";
-import { fetchServiceDetails } from "../../actions/fetchServiceDetails";
+import { fetchServiceDetails } from "../../app/actions/fetchServiceDetails";
 
 
 const ServiceDetailsPage = async ({ serviceId }) => {

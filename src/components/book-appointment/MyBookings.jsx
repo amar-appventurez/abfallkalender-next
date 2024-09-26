@@ -1,6 +1,6 @@
 import React from 'react';
 import BookingCard from '../BookingCard';
-import { fetchBookingDetails } from '../../actions/fetchSlotTimings';
+import { fetchBookingDetails } from '../../app/actions/fetchSlotTimings';
 import { useTranslations } from 'next-intl';
 import MyBookingHeader from './MyBookingHeader'
 

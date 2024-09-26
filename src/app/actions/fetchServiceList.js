@@ -1,6 +1,7 @@
-"server only"
+"use server"
 import { headers } from "next/headers";
-import {Endpoints} from "../constants/Endpoint"
+import {Endpoints} from "../../constants/Endpoint"
+import { getUserSession } from "../../session";
 
 export const fetchServiceList = async (page=1) => {
     const result=(await (await fetch(`${Endpoints.baseUrl}service/list?page=${page}&size=4`,{})).json());
@@ -28,12 +29,12 @@ export async function fetchCategoryFilters() {
       });
     
       const url = `${Endpoints.baseUrl}/service/categories?${params}`;
-    
+      const token=(await getUserSession())?.userDetails?.token ?? Endpoints.token;
       try {
         const response = await fetch(url, {
           method: 'GET', // Ensure this matches Postman method
           headers: {
-            'Authorization': `Bearer ${Endpoints.token}`, // Ensure the token is correct
+            'Authorization': `Bearer ${token}`, // Ensure the token is correct
             'Content-Type': 'application/json', // Include if necessary
           },
           cache: 'force-cache', // Adjust based on need
@@ -68,12 +69,12 @@ export async function fetchCategoryFilters() {
     });
   
     const url = `${Endpoints.baseUrl}/service/list?${params}`;
-  
+    const token=(await getUserSession())?.userDetails?.token ?? Endpoints.token;
     try {
       const response = await fetch(url, {
         method: 'GET', // Ensure this matches Postman method
         headers: {
-          'Authorization': `Bearer ${Endpoints.token}`, // Ensure the token is correct
+          'Authorization': `Bearer ${token}`, // Ensure the token is correct
           'Content-Type': 'application/json', // Include if necessary
         },
         cache: 'force-cache', // Adjust based on need

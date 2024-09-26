@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { fetchSlotTimings } from '../../actions/fetchSlotTimings';
+import { fetchSlotTimings } from '../../app/actions/fetchSlotTimings';
 import {useBookingForm} from './BookingFormContext'
 
 const TimingTabs = () => {

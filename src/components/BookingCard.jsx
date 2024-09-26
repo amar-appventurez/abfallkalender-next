@@ -4,10 +4,11 @@ const bookingIcon = "user.svg";
 const calenderClockIcon = "calendar-clock.svg";
 const mapPinIcon = "map-pin.svg";
 const sendIcon = "send.svg";
-import { fetchBookingDetails } from '../actions/fetchSlotTimings';
+import { fetchBookingDetails } from '../app/actions/fetchSlotTimings';
 import { useRouter } from 'next/navigation';
 import { getDateConversionForBookingCard } from '../utils/timeCalculation';
 import { useTranslations } from 'next-intl';
+import {Loading} from "../app/bookings/loading"
 
 const BookingCard = ({ initialBookings }) => {
   const [bookData, setBookData] = useState(initialBookings);
@@ -17,6 +18,7 @@ const BookingCard = ({ initialBookings }) => {
   const lastBookingRef = useRef(null); // Reference to the last booking element
   const router = useRouter();
   const bookingT=useTranslations('Booking');
+  const [loading,setLoading]=useState(false);
   const [filters, setFilters] = useState([
     { id: 0, name: bookingT('all'), isActive: true }, // Default to "All"
     { id: 1, name: bookingT('upcoming'), isActive: false },
@@ -43,11 +45,15 @@ const BookingCard = ({ initialBookings }) => {
     if (!hasMore && !reset) return; // Stop fetching if no more data to fetch
 
     const currentPage = reset ? 1 : page;
+    if(reset){
+      setLoading(true);
+    }
     const newBookings = await fetchBookingDetails(currentPage, status);
 
     if (reset) {
       setBookData(newBookings); // Reset data for the new filter
       setPage(2); // Reset to page 2 for next load
+      setLoading(false);
     } else {
       setBookData(prevData => [...prevData, ...newBookings]); // Append new data
       setPage(prevPage => prevPage + 1); // Increment page
@@ -94,6 +100,11 @@ const BookingCard = ({ initialBookings }) => {
       if (observer.current) observer.current.disconnect();
     };
   }, [bookData, hasMore]); // Ensure lastBookingRef is available after data changes
+
+
+  if(loading){
+    return <Loading />
+  }
 
   return (
     <div className="flex flex-col px-[16px] bg-bg-secondary pb-[4rem]">

@@ -1,47 +1,92 @@
 {
-    "HomePage": {
-      "title": "Finden Sie Ihr Thema",
-      "description": "Aktuelle Nachrichten aus der Stadt Worms",
-      "latest-news": "Neueste Nachrichten",
-      "see-all-news": "Alle Neuigkeiten anzeigen",
-      "see-all": "Alle ansehen",
-      "my-subscription": "Mein Abonnement",
-      "popular-subscription": "Beliebtes Abonnement",
-      "subscribe": "Abonnieren",
-      "subscribed": "Abonniert",
-      "subscriber": "Abonnent",
-      "subscribers": "Abonnenten"
-    },
-    "NewsPage": {
-      "header": "Nachrichten",
-      "all": "Alle",
-      "latest-news": "Neueste Nachrichten",
-      "see-all-news": "Alle Nachrichten ansehen"
-    },
-    "ViewNews": {
-      "title": "Von der Stadt Worms"
-    },
-    "Modal": {
-      "header": "Nachrichten",
-      "modal-unsubscribed": "Erfolgreich abgemeldet!",
-      "modal-unsubscribe-message": "Sie erhalten keine Updates von",
-      "modal-close": "Schließen",
-      "modal-subscribed": "Erfolgreich abonniert!",
-      "modal-subscribe-message-1": "Sie erhalten Updates von",
-      "modal-subscribe-message-2": "Thema im Chat-Menü",
-      "modal-subscribe-open-chats": "Chat öffnen"
-    },
-    "Subscribe": {
-      "title": "Themen abonnieren",
-      "filter-explore": "Entdecken",
-      "filter-mysubscription": "Mein Abonnement",
-      "filter-popular": "Beliebt",
-      "filter-new": "Neu"
-    },
-    "BottomNavigation": {
-      "home": "Startseite",
-      "news": "Nachrichten",
-      "subscribe": "Abonnieren"
-    }
+  "HomePage": {
+    "good-morning": "Good Morning, ",
+    "all-in-one":"All-in-one online service of Worms city administration",
+   "search-placeholder":"Search Service here...",
+    "functional-unit": "Functional Unit Service",
+    "service-office":"Service Office",
+    "latest-news": "Neueste Nachrichten",
+    "see-all-news": "Alle Neuigkeiten anzeigen",
+    "see-all": "Alle ansehen",
+    "my-subscription": "Mein Abonnement",
+    "popular-subscription": "Beliebtes Abonnement",
+    "subscribe": "Abonnieren",
+    "subscribed": "Abonniert",
+    "subscriber": "Abonnent",
+    "subscribers": "Abonnenten"
+  },
+  "NewsPage": {
+    "header": "Nachrichten",
+    "all": "Alle",
+    "latest-news": "Neueste Nachrichten",
+    "see-all-news": "Alle Nachrichten ansehen"
+  },
+  "ViewNews": {
+    "title": "Von der Stadt Worms"
+  },
+  "Modal": {
+    "header": "Nachrichten",
+    "modal-unsubscribed": "Erfolgreich abgemeldet!",
+    "modal-unsubscribe-message": "Sie erhalten keine Updates von",
+    "modal-close": "Schließen",
+    "modal-subscribed": "Erfolgreich abonniert!",
+    "modal-subscribe-message-1": "Sie erhalten Updates von",
+    "modal-subscribe-message-2": "Thema im Chat-Menü",
+    "modal-subscribe-open-chats": "Chat öffnen"
+  },
+  "Subscribe": {
+    "title": "Themen abonnieren",
+    "filter-explore": "Entdecken",
+    "filter-mysubscription": "Mein Abonnement",
+    "filter-popular": "Beliebt",
+    "filter-new": "Neu"
+  },
+  "BottomNavigation": {
+    "home": "Home",
+    "services": "Services",
+    "booking": "My Booking"
+  },
+  "Booking":{
+    "my-bookings":"My Bookings",
+    "all":"All",
+    "upcoming":"Upcoming",
+    "completed":"Completed"
+  },
+  "Services":{
+    "all":"All",
+    "all-lowercase":"all",
+    "service-categories":"Service Categories",
+    "pass-register":" Passport/registration System",
+    "fee":"Fees"
+  },
+  "ServiceDetails":{
+    "apply-passport":"Apply for a passport",
+    "service-details":"Service Details",
+    "no-service":"No service details available",
+    "select-location":"Select Location"
+  },
+  "Location":{
+    "your-location": "Your Location",
+    "date-time":"Your date and time"
+  },
+  "MultiStep":{
+    "confirmed-message":"Appointment Confirmed!",
+    "confirm-line":"Your appointment has been successfully scheduled.",
+    "select-date-time":"Select date and time",
+    "personal-details":"Personal Details",
+    "go-my-bookings":"Go to My Bookings",
+    "select-slot-time":"Select slot timings",
+    "reserve":"Reserve",
+    "next":"Next",
+    "select-location":"Select Location"
+  },
+  "Personal":{
+    "first-name":"First Name",
+    "family-name":"Family Name",
+    "email":"Email",
+    "email-repeat":"Email Repetition",
+    "phone":"Telephone No",
+    "declaration":"I consent to my personal data collected for the purpose of booking and processing appointments being processed by the responsible party.  Data protection information on the declaration of consent & Data protection & CONDITIONS",
+    "submit":"Submit"
   }
-  
+}
