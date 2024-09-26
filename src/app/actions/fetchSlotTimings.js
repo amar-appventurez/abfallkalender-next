@@ -2,6 +2,7 @@
 
 import { Endpoints } from "../../constants/Endpoint";
 import { getUserSession } from "../../session";
+import { fetchWithAuth } from "../../utils/fetchWithAuth";
 // import { getUserSession } from "../session";
 
 export const fetchSlotTimings = async () => {
@@ -38,15 +39,11 @@ export const fetchBookingDetails = async (page, status = 0, size = 3) => {
   });
 
   const url = `${Endpoints.baseUrl}/booking?${queryParams}`;
-  const token=(await getUserSession())?.userDetails?.token ?? Endpoints.token;
+  
   // console.log("Using token to call api",token)
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
+    const response = await fetchWithAuth(url, {
+
       // cache: 'force-cache',
     });
 

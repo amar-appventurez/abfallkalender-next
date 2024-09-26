@@ -2,6 +2,8 @@
 import { getUserSession } from "../../session";
 import {Endpoints} from "../../constants/Endpoint"
 
+import { fetchWithAuth } from "@/utils/fetchWithAuth";
+
 export const fetchServiceDetails = async (serviceId) => {
 
 
@@ -10,16 +12,10 @@ export const fetchServiceDetails = async (serviceId) => {
   });
 
   const url = `${Endpoints.baseUrl}/service?${params}`;
-  const token=(await getUserSession())?.userDetails?.token
   try {
-    const response = await fetch(url, {
+    const response = await fetchWithAuth(url, {
       method: 'GET', 
-      headers: {
-        'Authorization': `Bearer ${token}`, // Ensure the token is correct
-        'Content-Type': 'application/json', // Include if necessary
-      },
-      cache: 'force-cache', // Adjust based on need
-    });
+      cache: 'force-cache',});
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

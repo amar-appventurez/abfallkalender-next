@@ -2,6 +2,8 @@
 
 import { getUserSession } from "../../session";
 import { Endpoints } from "../../constants/Endpoint";
+import { fetchWithAuth } from "@/utils/fetchWithAuth";
+import { cache } from "react";
 // import { decryptToken } from "../n";
 
 export const bookNewAppointment=async (body)=>{
@@ -11,10 +13,6 @@ export const bookNewAppointment=async (body)=>{
   const token=(await getUserSession())?.userDetails?.token
     const response = await fetch(url, {
       method: 'POST', 
-      headers: {
-        'Authorization': `Bearer ${token}`, // Ensure the token is correct
-        'Content-Type': 'application/json', // Include if necessary
-      },
       body: JSON.stringify(body),
     });
 
