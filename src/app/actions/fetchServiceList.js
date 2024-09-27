@@ -4,7 +4,7 @@ import {Endpoints} from "../../constants/Endpoint"
 import { getUserSession } from "../../session";
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
 export const fetchServiceList = async (page=1) => {
-    const result=(await (await fetch(`${Endpoints.baseUrl}service/list?page=${page}&size=4`,{})).json());
+    const result=(await (await fetchWithAuth(`${Endpoints.baseUrl}service/list?page=${page}&size=4`,{})).json());
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {

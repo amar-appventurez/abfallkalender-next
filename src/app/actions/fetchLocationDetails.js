@@ -1,6 +1,6 @@
 "use server"
 import {Endpoints} from "../../constants/Endpoint"
-import { fetchWithAuth } from "@/utils/fetchWithAuth";
+import { fetchWithAuth } from "../../utils/fetchWithAuth";
 
   export const fetchLocationDetails = async (serviceId) => {
 
