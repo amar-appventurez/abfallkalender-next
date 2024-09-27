@@ -84,13 +84,7 @@ export async function fetchCategoryFilters() {
       return data.result.rows;
     } catch (error) {
       console.error('Fetch error:', error);
-      return [
-        { id: 0, name: "Apply for an identity card", category: "Passport/registration system", image: 'user.svg', fees: "€6.50 - €37" },
-        { id: 1, title: "Apply for a passport", category: "Passport/registration system", image: 'aeroplane.svg', fees: "€6.50 - €102" },
-        { id: 2, title: "Reporting loss of identity card / passport", category: "Passport/registration system", image: 'shield.svg', fees: "Free" },
-        { id: 3, title: "Setting a new PIN for your ID card/activating the online function", category: "Passport/registration system", image: 'paper_key.svg', fees: "Free" },
-        { id: 4, title: "Registration, deregistration and change of residence from within the country", category: "Passport/registration system", image: 'add_user.svg', fees: "Free" },
-      ];
+      return [];
     }
   }
   

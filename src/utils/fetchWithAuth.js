@@ -6,8 +6,8 @@ import { getLocale } from "next-intl/server";
 
 // Function to get the token from cookies
 const getToken = async () => {
-    const sessionCookie =await  getUserSession(); // Replace 'session' with your cookie name
-    return sessionCookie?.userDetails?.token ?? null; // Adjust based on your token structure
+    const session=await  getUserSession(); // Replace 'session' with your cookie name
+    return session?.userDetails?.token ?? null; // Adjust based on your token structure
 };
 
 
@@ -16,7 +16,6 @@ const getToken = async () => {
 // Custom fetch function
 export const fetchWithAuth = async (url, options = {}) => {
     const token = await getToken();
-
     const locale= getLocale();
 
     if (!token) {
