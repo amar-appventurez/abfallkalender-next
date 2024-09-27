@@ -10,14 +10,18 @@ import { createSession } from "../../../session";
 // // POST request handler
 export async function POST(request) {
   try {
+    const authHeader = request.headers.get('authorization');
+    if (authHeader !== process.env.API_ROUTE_KEY) { 
+      return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 404 }); 
+    }
     const { userDetails } = await request.json(); // Parse request body
-    const sessionToken = await createSession({userDetails}); // Create session
+    const sessionToken = await createSession({ userDetails }); // Create session
 
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // Set expiration
- 
+
     // Create a redirect response
     const response = NextResponse.redirect(`${process.env.NEXT_SERVER ?? "http://localhost/3000/"}home`); // Redirect to /home
-
+    console.log(sessionToken)
     // Set the session cookie
     response.cookies.set({
       name: "session",
@@ -40,6 +44,10 @@ export async function POST(request) {
 
 // export async function GET(request) {
 //     // Extract query parameters (e.g., tokens or user info)
+//     const authHeader = request.headers.get('authorization');
+//     if (authHeader !== process.env.API_ROUTE_KEY) { 
+//       return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 404 }); 
+//     }
 //     const { searchParams } = new URL(request.url);
 //     const oauthToken = searchParams.get('token');
 //     const userName = searchParams.get('userName');

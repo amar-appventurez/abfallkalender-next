@@ -44,7 +44,7 @@ const PhoneNumberInput = () => {
       <PhoneInput
         country={'de'} // Default country (Germany, for example)
         value={formData.phone}
-        onChange={(phone, countryData) => { 
+        onChange={(phone, countryData) => {
           const countryCode = countryData.dialCode;
           const phoneWithOutCountry = phone.slice(countryCode.length);
           setFormData((prev)=>{ return {...prev, phoneWithOutCountry, countryCode: `+${countryCode}`, phone} })
