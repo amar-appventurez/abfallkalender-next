@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react'
 
-const loading = () => {
+const Loading = () => {
   const serviceT= useTranslations('Services')
   return (
     <div className="flex flex-col w-full bg-white">
@@ -115,4 +115,4 @@ const loading = () => {
 );
 }
 
-export default loading
+export default Loading
