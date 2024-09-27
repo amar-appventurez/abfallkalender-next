@@ -1,14 +1,15 @@
 import React from 'react'
 import Header from "../../components/services-details/Header"
-const loading = () => {
-
+import { useTranslations } from 'next-intl'
+const Loading = () => {
+  const serviceDT= useTranslations('ServiceDetails')
   const serviceDetailsSkeleton=[{},{}]
   return (
     <>
       <div className="flex flex-row items-center py-[15px] px-[16px] bg-white">
             <img className="cursor-pointer" src='chevron-left.svg' alt="back" />
             <div className="flex flex-grow justify-center">
-                <span>Service Details</span>
+                <span>{serviceDT('service-details')}</span>
             </div>
             <img src="search copy.svg" alt="header" />
         </div>
@@ -35,7 +36,7 @@ const loading = () => {
      
 
         <button class="flex items-center justify-center px-4 py-2 bg-worms-blue text-white border-none rounded-xl cursor-pointer relative w-bottom-nav-button h-bottom-nav-button">
-          <span class="flex-1 text-center text-white"> Select Location</span>
+          <span class="flex-1 text-center text-white"> {serviceDT('select-location')}</span>
           <img className="cursor-pointer" src='chevron-right.svg' alt="back" />
         </button>
       </div>
@@ -44,4 +45,4 @@ const loading = () => {
     </>);
 }
 
-export default loading
+export default Loading

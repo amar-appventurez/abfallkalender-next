@@ -5,7 +5,7 @@ const image = "logo.svg";
 const searchImage = "search.svg";
 const serviceOfficeIcon = "diamond.svg";
 
-const loading = () => {
+const Loading = () => {
     const homeT=useTranslations('HomePage')
   return (
     <div className="flex flex-col w-full bg-white mb-[200px]">
@@ -69,4 +69,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default Loading
