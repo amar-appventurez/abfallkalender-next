@@ -16,9 +16,6 @@ const Home =async ({userParams}) => {
   // Get the session on the server
   const session = await getUserSession();  
   const userName = session?.userDetails?.userName;
-  if(!session){
-    redirect('/')
-  }
   // Case: No session or user email
   // if (!userEmail && userParams && Object.keys(userParams).length !== 0) {
   //   try {
