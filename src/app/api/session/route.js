@@ -44,16 +44,17 @@ import { createSession } from "../../../session";
 
 export async function GET(request) {
     // Extract query parameters (e.g., tokens or user info)
-    const authHeader = request.headers.get('authorization');
-    if (authHeader !== process.env.API_ROUTE_KEY) { 
-      return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 404 }); 
-    }
+    
+    // const authHeader = request.headers.get('authorization');
+    // if (authHeader !== process.env.API_ROUTE_KEY) { 
+    //   return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 404 }); 
+    // }
     const { searchParams } = new URL(request.url);
     const oauthToken = searchParams.get('token');
     const userName = searchParams.get('userName');
     const email= searchParams.get('email')
     if (!oauthToken) {
-        return NextResponse.redirect('/error');  // Handle OAuth failure
+        return NextResponse.redirect('/');  // Handle OAuth failure
     }
 
     // Use the token and user data to create a session
