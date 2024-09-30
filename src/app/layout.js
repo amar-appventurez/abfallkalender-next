@@ -15,9 +15,11 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const locale = await getLocale();
   const messages = await getMessages();
-
+  console.log("locale is", locale)
+  const rtlLanguages=["ar"]
+  const dir= rtlLanguages.includes(locale) ? "rtl": "ltr"
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={dir}>
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}

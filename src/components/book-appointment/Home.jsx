@@ -5,12 +5,10 @@ import {createSession, getUserSession} from '../../session'
 import HomeMain from "./HomeMain"
 
 const image = "logo.svg";
-const searchImage = "search.svg";
-const serviceOfficeIcon = "diamond.svg";
 
 
 import BookingCard from '../BookingCard'
-import { redirect } from "next/navigation";
+
 
 const Home =async ({userParams}) => {
   // Get the session on the server

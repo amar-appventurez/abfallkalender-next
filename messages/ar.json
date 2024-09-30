@@ -1,0 +1,58 @@
+{
+    "HomePage": {
+      "good-morning": "صباح الخير، ",
+      "all-in-one": "خدمة شاملة عبر الإنترنت لإدارة مدينة وورمز",
+      "search-placeholder": "ابحث عن الخدمة هنا...",
+      "functional-unit": "خدمة الوحدة الوظيفية",
+      "service-office": "مكتب الخدمة"
+    },
+    "BottomNavigation": {
+      "home": "الصفحة الرئيسية",
+      "services": "الخدمات",
+      "booking": "حجوزاتي"
+    },
+    "Booking": {
+      "my-bookings": "حجوزاتي",
+      "all": "الكل",
+      "upcoming": "القادمة",
+      "completed": "المكتملة"
+    },
+    "Services": {
+      "all": "الكل",
+      "all-lowercase": "الكل",
+      "service-categories": "فئات الخدمة",
+      "pass-register": "نظام جواز السفر / التسجيل",
+      "fee": "الرسوم"
+    },
+    "ServiceDetails": {
+      "apply-passport": "تقديم طلب جواز سفر",
+      "service-details": "تفاصيل الخدمة",
+      "no-service": "لا توجد تفاصيل خدمة متاحة",
+      "select-location": "اختر الموقع"
+    },
+    "Location": {
+      "your-location": "موقعك",
+      "date-time": "التاريخ والوقت الخاص بك"
+    },
+    "MultiStep": {
+      "confirmed-message": "تم تأكيد الموعد!",
+      "confirm-line": "تم جدولة موعدك بنجاح.",
+      "select-date-time": "اختر التاريخ والوقت",
+      "personal-details": "البيانات الشخصية",
+      "go-my-bookings": "اذهب إلى حجوزاتي",
+      "select-slot-time": "اختر توقيت الفتحة",
+      "reserve": "احجز",
+      "next": "التالي",
+      "select-location": "اختر الموقع"
+    },
+    "Personal": {
+      "first-name": "الاسم الأول",
+      "family-name": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "email-repeat": "تكرار البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "declaration": "أوافق على جمع بياناتي الشخصية لغرض الحجز ومعالجة المواعيد من قبل الجهة المسؤولة. معلومات حماية البيانات على بيان الموافقة & حماية البيانات & الشروط",
+      "submit": "إرسال"
+    }
+  }
+  
