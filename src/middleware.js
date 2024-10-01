@@ -12,8 +12,10 @@ export async function middleware(request) {
     }
     const session = await getUserSession();
     if (!session) {
-        return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);
+        console.log("Session not found, redirecting to auth");
+        return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
     }
+    return NextResponse.next(); 
 }
 
 export const config = {

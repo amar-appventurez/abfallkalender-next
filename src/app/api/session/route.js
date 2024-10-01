@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createSession } from "../../../session";
+import { decryptToken } from "@/constants/common";
 
 
 /** Handler for post route for actual callback for backend redirection after 
@@ -44,7 +45,7 @@ import { createSession } from "../../../session";
 
 export async function GET(request) {
     // Extract query parameters (e.g., tokens or user info)
-    
+
     // const authHeader = request.headers.get('authorization');
     // if (authHeader !== process.env.API_ROUTE_KEY) { 
     //   return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 404 }); 
@@ -56,14 +57,14 @@ export async function GET(request) {
     if (!oauthToken) {
         return NextResponse.redirect('/');  // Handle OAuth failure
     }
-
+    const decryptedToken = await decryptToken(oauthToken); 
     // Use the token and user data to create a session
     const userDetails = {
-        token: oauthToken,
+        token: decryptedToken,
         userName: userName,
         email
     };
-
+    
     // Create the session with the token
     const sessionToken = await createSession(userDetails);
 
