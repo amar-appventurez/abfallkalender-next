@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createSession } from "../../../session";
-import { decryptToken } from "@/constants/common";
+import { decryptToken } from "../../../constants/common";
 
 
 /** Handler for post route for actual callback for backend redirection after 
