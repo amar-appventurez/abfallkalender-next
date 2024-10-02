@@ -74,7 +74,7 @@ export async function getUserSession() {
 
   // Try to decrypt the session cookie
   try {
-    const session = await decrypt(sessionCookie.value);
+    const session = await decrypt(sessionCookie?.value);
     return session;
   } catch (error) {
     console.error("Failed to decrypt session", error);
