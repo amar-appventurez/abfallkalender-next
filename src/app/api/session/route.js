@@ -82,8 +82,5 @@ export async function GET(request) {
         path: '/',
     });
 
-    //add delay before redirecting to home
-    setTimeout(() => {
     return response;
-}, 100);
 }
