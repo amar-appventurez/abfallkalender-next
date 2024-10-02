@@ -1,5 +1,12 @@
 import CryptoJS from 'crypto-js';
 
+export function isValidUTF8(data) {
+  try {
+      return Buffer.from(data, 'utf8').toString('utf8') === data;
+  } catch (e) {
+      return false;
+  }
+}
 
 export const encryptToken = (data) => {
     data = data.toString();

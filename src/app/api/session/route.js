@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createSession } from "../../../session";
-import { decryptToken } from "../../../constants/common";
+import { decryptToken, isValidUTF8 } from "../../../constants/common";
 
 
 /** Handler for post route for actual callback for backend redirection after 
@@ -52,18 +52,23 @@ export async function GET(request) {
     // }
     const { searchParams } = new URL(request.url);
     const oauthToken = searchParams.get('token');
-    const userName = searchParams.get('userName');
+    const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
     if (!oauthToken) {
         return NextResponse.redirect('/');  // Handle OAuth failure
     }
     const decryptedToken = await decryptToken(oauthToken); 
+    if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
+        return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });
+    }
     // Use the token and user data to create a session
     const userDetails = {
         token: decryptedToken,
         userName: userName,
         email
     };
+
+    
     
     // Create the session with the token
     const sessionToken = await createSession(userDetails);
