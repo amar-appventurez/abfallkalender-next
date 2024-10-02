@@ -12,6 +12,7 @@ import BookingCard from '../BookingCard'
 
 const Home =async ({userParams}) => {
   // Get the session on the server
+  await new Promise((resolve)=>{ setTimeout(()=>{ return resolve()},100)})
   const session = await getUserSession(); 
   console.log("Session info fetched", session); 
   const userName = session?.userDetails?.userName;
