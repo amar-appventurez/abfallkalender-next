@@ -82,8 +82,5 @@ export async function GET(request) {
         path: '/',
     });
 
-    //before redirecting
-    await new Promise((resolve)=>{ setTimeout(()=>{ return resolve()},100)})
-
     return response;
 }
