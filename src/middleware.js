@@ -11,6 +11,7 @@ export async function middleware(request) {
         return NextResponse.next(); // Allow the request to proceed
     }
     const session = request.cookies.get("session");
+    console.log("Session data found in middleware", session)
     if (!session) {
         console.log("Session not found, redirecting to auth");
         // return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
