@@ -68,7 +68,7 @@ export async function GET(request) {
         email
     };
 
-    
+
     
     // Create the session with the token
     const sessionToken = await createSession(userDetails);
@@ -82,5 +82,8 @@ export async function GET(request) {
         path: '/',
     });
 
+    //add delay before redirecting to home
+    setTimeout(() => {
     return response;
+}, 100);
 }
