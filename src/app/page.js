@@ -9,5 +9,6 @@ export default async function Home() {
     redirect(`${Endpoints.baseUrl}/auth/login`);
    
   }
-  redirect(`${Endpoints.baseUrl}/home`);
+  // redirect(`${process.env.NEXT_SERVER}home`);
+  redirect('/home')
 }
