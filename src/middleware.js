@@ -14,8 +14,8 @@ export async function middleware(request) {
     console.log("Session data found in middleware", session)
     if (!session) {
         console.log("Session not found, redirecting to auth");
-        // return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
-        return NextResponse.redirect('/');
+        return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
+        // return NextResponse.redirect('/');
     }
     return NextResponse.next(); 
 }
