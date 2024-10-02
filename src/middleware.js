@@ -8,7 +8,7 @@ export async function middleware(request) {
     console.log(pathname)
     // Skip session checking for the base path '/'
     if (['/api/session','/'].includes(pathname)) {
-        return NextResponse.next(); // Allow the request to proceed
+        return NextResponse.next(); // Allow the request to proceed without session check
     }
     const session = request.cookies.get("session");
     console.log("Session data found in middleware", session)
