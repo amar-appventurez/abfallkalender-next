@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-// import { getUserSession } from './session'
+import { getUserSession } from './session';
+
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request) {
@@ -10,11 +11,11 @@ export async function middleware(request) {
     if (['/api/session','/'].includes(pathname)) {
         return NextResponse.next(); // Allow the request to proceed without session check
     }
-    const session = request.cookies.get("session");
+    const session = await getUserSession();
     console.log("Session data found in middleware", session)
     if (!session) {
         console.log("Session not found, redirecting to auth");
-        return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
+        // return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
         // return NextResponse.redirect('/');
     }
     return NextResponse.next(); 
