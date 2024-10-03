@@ -8,7 +8,6 @@ const MyBookingHeader = () => {
     <div className="flex flex-grow justify-center">
       <span className="text-title3 text-title-large-1">{bookT('my-bookings')}</span>
     </div>
-    <img src="search copy.svg" alt="header" />
   </div>
 
   )

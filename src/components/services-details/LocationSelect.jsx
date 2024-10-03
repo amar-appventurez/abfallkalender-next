@@ -47,7 +47,6 @@ const LocationSelect = ({serviceId}) => {
         <div className="flex flex-grow justify-center">
           <span>{multiT('select-location')}</span>
         </div>
-        <img src="search copy.svg" alt="header" />
       </div>
       <div className="container mx-auto px-4 py-8 bg-bg-secondary">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

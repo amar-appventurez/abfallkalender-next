@@ -11,7 +11,6 @@ const Loading = () => {
             <div className="flex flex-grow justify-center">
                 <span>{serviceDT('service-details')}</span>
             </div>
-            <img src="search copy.svg" alt="header" />
         </div>
         <div className='px-[16px] py-[20px] bg-white'>
             <div className='flex flex-col gap-[12px]'>

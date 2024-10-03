@@ -10,7 +10,6 @@ const Loading = () => {
       <div className="flex flex-grow justify-center">
         <span>{serviceT('service-categories')}</span>
       </div>
-      <img src="search copy.svg" alt="header" />
     </div>
 
     {/* TAB VIEW */}

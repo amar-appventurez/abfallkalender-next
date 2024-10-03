@@ -1,0 +1,13 @@
+{
+    "version": "2.0",
+    "theme": "light",
+    "fullScreen": false,
+    "statusBar": {
+      "theme": {
+        "light": { "backgroundColor": "#ffffff" },
+        "dark": { "backgroundColor": "#ffffff" }
+      }
+    },
+    "navigationBar": { "visible": false }
+  }
+  

@@ -85,7 +85,6 @@ const MultiStepForm = ({ serviceId, serviceName, serviceCategory }) => {
             <div className="flex flex-grow justify-center">
               <span>{multiStepT('select-date-time')}</span>
             </div>
-            <img src="search copy.svg" alt="header" />
           </div>
           <DateCardCarousel></DateCardCarousel>
           <TimingsTab /></>;
