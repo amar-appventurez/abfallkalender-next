@@ -30,12 +30,15 @@ const BottomNav = () => {
   }, [path])
   
   return (
-    <div className="fixed bottom-0 rounded-stepper-border-nav-radius w-[100%] border-stepper-bottom-nav-border border-border-color-1 pb-[0.2rem]">
+    <div className="fixed bottom-0 rounded-stepper-border-nav-radius w-[100%] border-stepper-bottom-nav-border border-border-color-1">
       <BottomNavigation
         showLabels
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
+        }}
+        sx={{
+          pb: 1
         }}
       >
         <BottomNavigationAction

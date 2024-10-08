@@ -2,7 +2,7 @@
 import { Endpoints } from "../constants/Endpoint";
 import { redirect } from "next/navigation";
 import {getUserSession} from '../session';
-export default async function Home() {
+export default async function Root() {
   const session= await getUserSession();
   if(!session){
     console.log("Redirecting to oauth server");
