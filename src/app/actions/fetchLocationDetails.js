@@ -1,4 +1,5 @@
 "use server"
+import { redirect } from "next/navigation";
 import {Endpoints} from "../../constants/Endpoint"
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
 
@@ -16,6 +17,11 @@ import { fetchWithAuth } from "../../utils/fetchWithAuth";
         method: 'GET', 
         // cache: 'force-cache', // Adjust based on need
       });
+
+      if (response.redirect) {
+        // Perform the redirection
+        redirect('/'); // Redirect to the home page
+    }
   
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

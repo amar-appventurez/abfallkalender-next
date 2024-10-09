@@ -3,6 +3,7 @@ import { getUserSession } from "../../session";
 import {Endpoints} from "../../constants/Endpoint"
 
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
+import { redirect } from "next/navigation";
 
 export const fetchServiceDetails = async (serviceId) => {
 
@@ -17,6 +18,11 @@ export const fetchServiceDetails = async (serviceId) => {
       method: 'GET', 
       // cache: 'force-cache',
     });
+
+    if (response.redirect) {
+      // Perform the redirection
+      redirect('/'); // Redirect to the home page
+    }
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

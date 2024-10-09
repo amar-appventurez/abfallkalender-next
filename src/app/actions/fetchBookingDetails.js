@@ -2,6 +2,7 @@
 import { getUserSession } from "../../session";
 import {Endpoints} from "../../constants/Endpoint"
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
+import { redirect } from "next/navigation";
 
   export const fetchBookingDetails = async (bookingId) => {
 
@@ -19,6 +20,11 @@ import { fetchWithAuth } from "../../utils/fetchWithAuth";
         method: 'GET', 
         // cache: 'force-cache', // Adjust based on need
       });
+
+      if (response.redirect) {
+        // Perform the redirection
+        redirect('/'); // Redirect to the home page
+    }
   
       if (!response.ok) {
         

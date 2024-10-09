@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import {Endpoints} from "../../constants/Endpoint"
 import { getUserSession } from "../../session";
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
+import { redirect } from "next/dist/server/api-utils";
 export const fetchServiceList = async (page=1) => {
     const result=(await (await fetchWithAuth(`${Endpoints.baseUrl}service/list?page=${page}&size=4`,{})).json());
 
@@ -35,7 +36,12 @@ export async function fetchCategoryFilters() {
           method: 'GET', // Ensure this matches Postman method
           cache: 'force-cache', // Adjust based on need
         });
-    
+        
+        if (response.redirect) {
+          // Perform the redirection
+          redirect('/'); // Redirect to the home page
+      }
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

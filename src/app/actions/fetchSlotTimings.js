@@ -1,5 +1,6 @@
 "use server"
 
+import { redirect } from "next/navigation";
 import { Endpoints } from "../../constants/Endpoint";
 import { getUserSession } from "../../session";
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
@@ -47,6 +48,10 @@ export const fetchBookingDetails = async (page, status = 0, size = 3) => {
       // cache: 'force-cache',
     });
 
+    if (response.redirect) {
+      // Perform the redirection
+      redirect('/'); // Redirect to the home page
+  }
     
 
     if (!response.ok) {
