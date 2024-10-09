@@ -4,7 +4,6 @@ import { cookies } from "next/headers"; // Adjust the import based on your proje
 import { deleteSession, getUserSession } from "../session";
 import { getLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
-import { Endpoints } from "@/constants/Endpoint";
 
 
 // Function to get the token from cookies
