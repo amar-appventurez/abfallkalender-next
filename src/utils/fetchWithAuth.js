@@ -31,7 +31,7 @@ export const fetchWithAuth = async (url, options = {}) => {
             redirect('/');  // Redirect to the home page
         } else {
             // Client-side redirection
-            onsole.log("Client side redirection")
+            console.log("Client side redirection")
             window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
         }
 
