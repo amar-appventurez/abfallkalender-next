@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { deleteSession } from "../../../session";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
-
-export async function GET(request,response) {
+export async function GET(request) {
         // Clear the session cookie
         // deleteSession();
         // Perform redirection (server-side)
 
         const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);
-
+        // cookies().delete('session')
         console.log("Clearing session cookies explicitly")
         response.cookies.delete('session');
         // response.cookies.set('session', '', {
