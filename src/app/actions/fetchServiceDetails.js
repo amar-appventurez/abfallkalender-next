@@ -15,7 +15,8 @@ export const fetchServiceDetails = async (serviceId) => {
   try {
     const response = await fetchWithAuth(url, {
       method: 'GET', 
-      cache: 'force-cache',});
+      // cache: 'force-cache',
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

@@ -14,7 +14,7 @@ import { fetchWithAuth } from "../../utils/fetchWithAuth";
     try {
       const response = await fetchWithAuth(url, {
         method: 'GET', 
-        cache: 'force-cache', // Adjust based on need
+        // cache: 'force-cache', // Adjust based on need
       });
   
       if (!response.ok) {

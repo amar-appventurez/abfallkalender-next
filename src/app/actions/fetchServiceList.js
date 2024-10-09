@@ -73,7 +73,7 @@ export async function fetchCategoryFilters() {
           'Authorization': `Bearer ${token}`, // Ensure the token is correct
           'Content-Type': 'application/json', // Include if necessary
         },
-        cache: 'force-cache', // Adjust based on need
+        // cache: 'force-cache', // Adjust based on need
       });
   
       if (!response.ok) {

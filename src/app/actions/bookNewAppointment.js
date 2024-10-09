@@ -10,7 +10,7 @@ export const bookNewAppointment=async (body)=>{
 
   const url = `${Endpoints.baseUrl}/booking`;
 
-  const token=(await getUserSession())?.userDetails?.token
+  // const token=(await getUserSession())?.userDetails?.token
     const response = await fetchWithAuth(url, {
       method: 'POST', 
       body: JSON.stringify(body),
