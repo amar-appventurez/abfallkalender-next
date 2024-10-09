@@ -10,7 +10,7 @@ export async function middleware(request) {
     
    
     // Skip session checking for the base path '/'
-    if (['/api/session','/api/clear-session'].includes(pathname)) {
+    if (['/api/session','/','/api/clear-session'].includes(pathname)) {
         return NextResponse.next(); // Allow the request to proceed without session check
     }
     
