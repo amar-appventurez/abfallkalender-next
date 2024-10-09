@@ -4,6 +4,7 @@ import { cookies } from "next/headers"; // Adjust the import based on your proje
 import { deleteSession, getUserSession } from "../session";
 import { getLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 
 
 // Function to get the token from cookies
@@ -56,9 +57,9 @@ export const fetchWithAuth = async (url, options = {}) => {
     if (response.status === 401) {
         console.log("Received 401, clearing session");
        
-        await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
-            method: "GET",
-        });
+        // await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
+        //     method: "GET",
+        // });
 
           console.log("Back from clearing the session");
 
@@ -66,7 +67,16 @@ export const fetchWithAuth = async (url, options = {}) => {
           if (typeof window === 'undefined') {
             // Server-side redirection using Next.js redirect
             console.log("Server side redirection")
-            redirect("/home");  // Redirect to the home page
+            const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}home`);
+            cookies().delete('session')
+            console.log("Clearing session cookies explicitly")
+            // response.cookies.delete('session');
+            // response.cookies.set('session', '', {
+            //     expires: new Date(0), // Set to a date in the past to delete the cookie
+            //     path: '/',   
+            // });
+            return response; 
+            //redirect("/home");  // Redirect to the home page
         } else {
             // Client-side redirection
             console.log("Client side redirection")
