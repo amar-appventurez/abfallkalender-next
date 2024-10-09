@@ -8,7 +8,7 @@ export async function middleware(request) {
     const { pathname } = new URL(request.url);
     console.log(pathname)
     // Skip session checking for the base path '/'
-    if (['/api/session','/'].includes(pathname)) {
+    if (['/api/session','/','/api/clear-session'].includes(pathname)) {
         return NextResponse.next(); // Allow the request to proceed without session check
     }
     const session = await getUserSession();
