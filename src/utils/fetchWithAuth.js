@@ -24,15 +24,19 @@ export const fetchWithAuth = async (url, options = {}) => {
         await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
             method: "GET",
           });
-          console.log("Back from clearing the session");
-          if (typeof window !== 'undefined') {
-            // Client-side redirection after session is cleared
-            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
+          console.log("Back from clearing the session--token was missing");
+          if (typeof window === 'undefined') {
+            // Server-side redirection using Next.js redirect
+            console.log("Server side redirection")
+            redirect('/');  // Redirect to the home page
         } else {
-            // Handle server-side redirection if needed (depending on where fetchWithAuth is called)
-            throw new Error('Token is missing, but running on the server. Redirection should be handled differently.');
+            // Client-side redirection
+            onsole.log("Client side redirection")
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
         }
-        throw new Error(`Token is missing`);
+
+        // Optionally, return here to avoid further execution
+        return;
       }
 
     // Set default headers
@@ -55,15 +59,20 @@ export const fetchWithAuth = async (url, options = {}) => {
             method: "GET",
           });
           console.log("Back from clearing the session");
-          if (typeof window !== 'undefined') {
-            // Client-side redirection after session is cleared
-            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
+          if (typeof window === 'undefined') {
+            // Server-side redirection using Next.js redirect
+            console.log("Server side redirection")
+            redirect('/');  // Redirect to the home page
         } else {
-            // Handle server-side redirection if needed (depending on where fetchWithAuth is called)
-            throw new Error('Token is missing, but running on the server. Redirection should be handled differently.');
+            // Client-side redirection
+            console.log("Client side redirection")
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
         }
+
+        // Optionally, return here to avoid further execution
+        
           throw new Error("Unauthorized - token expired or invalid");
-      
+           
     }
 
     // Check for response errors and handle accordingly
