@@ -8,7 +8,7 @@ export async function GET(request) {
         // deleteSession();
         // Perform redirection (server-side)
 
-        const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);
+        const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}home`);
         cookies().delete('session')
         console.log("Clearing session cookies explicitly")
         // response.cookies.delete('session');
