@@ -42,6 +42,7 @@ export const fetchWithAuth = async (url, options = {}) => {
 
     // Check for 401 error and handle token expiration
     if (response.status === 401) {
+        console.log("Received 401, clearing session");
         await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
             method: "GET",
           });
