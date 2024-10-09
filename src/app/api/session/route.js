@@ -54,9 +54,9 @@ export async function GET(request) {
     const oauthToken = searchParams.get('token');
     const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
-    if (!oauthToken) {
-        return NextResponse.redirect('/');  // Handle OAuth failure
-    }
+    // if (!oauthToken) {
+    //     return NextResponse.redirect('/');  // Handle OAuth failure
+    // }
     const decryptedToken = await decryptToken(oauthToken); 
     if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
         return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });

@@ -7,7 +7,7 @@ export async function middleware(request) {
 
     const { pathname } = new URL(request.url);
     console.log(pathname)
-
+    
    
     // Skip session checking for the base path '/'
     if (['/api/session','/api/clear-session'].includes(pathname)) {
@@ -20,7 +20,8 @@ export async function middleware(request) {
     if (!session) {
         console.log("Session not found, redirecting to auth");
         // return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
-        return NextResponse.redirect('/');
+        const loginUrl = new URL("/", request.url)
+        return NextResponse.redirect(loginUrl);
     }
     return NextResponse.next(); 
 }
