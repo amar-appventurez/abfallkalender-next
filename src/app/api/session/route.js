@@ -75,12 +75,12 @@ export async function GET(request) {
 
     // Set the session cookie in the response
     const response = NextResponse.redirect(`${process.env.NEXT_SERVER ?? "http://localhost/3000/"}home`);  // Redirect to homepage after successful login
-    response.cookies.set('session', sessionToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        path: '/',
-    });
+    // response.cookies.set('session', sessionToken, {
+    //     httpOnly: true,
+    //     secure: process.env.NODE_ENV === 'production',
+    //     sameSite: 'strict',
+    //     path: '/',
+    // });
 
     return response;
 }
