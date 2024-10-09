@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { deleteSession } from "../../../session";
+import { Endpoints } from "../../../constants/Endpoint";
 
 
 export async function GET(request) {
@@ -7,6 +8,6 @@ export async function GET(request) {
         console.log("Clearing session and redirecting...");
         await deleteSession();
         // Perform redirection (server-side)
-        return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);
+        return NextResponse.redirect(`${Endpoints.baseUrl}/auth/login`);
     
 }
