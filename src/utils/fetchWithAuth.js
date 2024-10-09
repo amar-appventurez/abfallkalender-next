@@ -24,6 +24,14 @@ export const fetchWithAuth = async (url, options = {}) => {
         await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
             method: "GET",
           });
+          console.log("Back from clearing the session");
+          if (typeof window !== 'undefined') {
+            // Client-side redirection after session is cleared
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
+        } else {
+            // Handle server-side redirection if needed (depending on where fetchWithAuth is called)
+            throw new Error('Token is missing, but running on the server. Redirection should be handled differently.');
+        }
         throw new Error(`Token is missing`);
       }
 
@@ -46,7 +54,14 @@ export const fetchWithAuth = async (url, options = {}) => {
         await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
             method: "GET",
           });
-    
+          console.log("Back from clearing the session");
+          if (typeof window !== 'undefined') {
+            // Client-side redirection after session is cleared
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
+        } else {
+            // Handle server-side redirection if needed (depending on where fetchWithAuth is called)
+            throw new Error('Token is missing, but running on the server. Redirection should be handled differently.');
+        }
           throw new Error("Unauthorized - token expired or invalid");
       
     }
