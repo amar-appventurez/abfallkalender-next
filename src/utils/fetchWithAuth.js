@@ -25,15 +25,15 @@ export const fetchWithAuth = async (url, options = {}) => {
             method: "GET",
           });
           console.log("Back from clearing the session--token was missing");
-        //   if (typeof window === 'undefined') {
-        //     // Server-side redirection using Next.js redirect
-        //     console.log("Server side redirection")
-        //     redirect('/');  // Redirect to the home page
-        // } else {
-        //     // Client-side redirection
-        //     console.log("Client side redirection")
-        //     window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
-        // }
+          if (typeof window === 'undefined') {
+            // Server-side redirection using Next.js redirect
+            console.log("Server side redirection")
+            redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);  // Redirect to the home page
+        } else {
+            // Client-side redirection
+            console.log("Client side redirection")
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
+        }
         return { redirect: true }; // Indicate that a redirect is needed
         // Optionally, return here to avoid further execution
         
@@ -60,16 +60,16 @@ export const fetchWithAuth = async (url, options = {}) => {
           });
           console.log("Back from clearing the session");
 
-          return { redirect: true }; // Indicate that a redirect is needed
-        //   if (typeof window === 'undefined') {
-        //     // Server-side redirection using Next.js redirect
-        //     console.log("Server side redirection")
-        //     redirect('/');  // Redirect to the home page
-        // } else {
-        //     // Client-side redirection
-        //     console.log("Client side redirection")
-        //     window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
-        // }
+        //   return { redirect: true }; // Indicate that a redirect is needed
+          if (typeof window === 'undefined') {
+            // Server-side redirection using Next.js redirect
+            console.log("Server side redirection")
+            redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);  // Redirect to the home page
+        } else {
+            // Client-side redirection
+            console.log("Client side redirection")
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
+        }
 
         // Optionally, return here to avoid further execution
         
