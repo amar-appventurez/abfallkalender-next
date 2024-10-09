@@ -59,7 +59,7 @@ export async function updateSession() {
   });
 }
 
-export function deleteSession() {
+export async function deleteSession() {
   console.log("Deleting cookie")
   cookies().delete("session");
 }
