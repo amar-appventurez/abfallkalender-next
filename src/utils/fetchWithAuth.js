@@ -71,7 +71,7 @@ export const fetchWithAuth = async (url, options = {}) => {
 
         // Optionally, return here to avoid further execution
         
-          throw new Error("Unauthorized - token expired or invalid");
+         return
            
     }
 
