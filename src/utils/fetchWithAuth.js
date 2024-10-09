@@ -21,7 +21,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     const locale = getLocale();
 
     if (!token) {
-        await fetch("/api/clear-session", {
+        await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
             method: "GET",
           });
         throw new Error(`Token is missing`);
@@ -42,7 +42,7 @@ export const fetchWithAuth = async (url, options = {}) => {
 
     // Check for 401 error and handle token expiration
     if (response.status === 401) {
-        await fetch("/api/clear-session", {
+        await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
             method: "GET",
           });
     
