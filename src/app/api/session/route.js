@@ -75,7 +75,7 @@ export async function GET(request) {
 
     // Set the session cookie in the response
     const redirectUrl = new URL('/home',request.url)
-    const response = NextResponse.redirect(`${redirectUrl}e`);  // Redirect to homepage after successful login
+    const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
     response.cookies.set('session', sessionToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
