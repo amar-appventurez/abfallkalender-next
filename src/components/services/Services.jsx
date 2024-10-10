@@ -99,9 +99,9 @@ const Services = ({servicesData, filtersData}) => {
 
 
   return (
-    <div className="flex flex-col w-full bg-white">
+    <div className="flex flex-col w-full bg-white fixed">
       {/* HEADER */}
-      <div className="flex flex-row items-center py-[15px] px-[16px]">
+      <div className="flex flex-row items-center py-[12px] px-[16px] w-[100vw]">
         <div className="flex flex-grow justify-center">
           <span>{serviceT('service-categories')}</span>
         </div>

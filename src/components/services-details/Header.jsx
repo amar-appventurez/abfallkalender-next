@@ -12,14 +12,14 @@ import { useTranslations } from 'next-intl';
 const Header = ({name, category}) => {
     const serviceDTrans= useTranslations('ServiceDetails')
     const router = useRouter();
-    return (<>
-        <div className="flex flex-row items-center py-[15px] px-[16px] bg-white">
+    return (<div className='fixed w-[100vw]'>
+        <div className="flex flex-row items-center px-[16px] py-[12px] bg-white w-[100vw]">
             <img className="cursor-pointer" src='chevron-left.svg' alt="back" onClick={() => { router.push('/services') }} />
             <div className="flex flex-grow justify-center">
                 <span>{serviceDTrans('service-details')}</span>
             </div>
         </div>
-        <div className='px-[16px] py-[20px] bg-white'>
+        <div className='px-[16px] py-[20px] bg-white w-[100vw]'>
             <div className='flex flex-col gap-[12px]'>
             <img className="cursor-pointer w-[24px]" src='square-user-round.svg' alt="back" onClick={() => { router.push('/services') }} />
             <span className='text-large-none-semibold text-semibold'>{name}</span>
@@ -27,7 +27,7 @@ const Header = ({name, category}) => {
             </div>
         </div>
        
-    </>
+    </div>
     )
 }
 

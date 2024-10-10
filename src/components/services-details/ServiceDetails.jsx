@@ -86,7 +86,7 @@ const ServiceDetails = ({ serviceDetails, serviceId, serviceName, serviceCategor
   return (
     <div className="container mx-auto px-4 py-8  bg-bg-secondary pb-[75px]">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {serviceDetails.map((service, index) => (
+        {serviceDetails?.map((service, index) => (
           <div key={index} className="col-span-1">
             <p className="font-bold-500 text-header-description-1 m-0 p-4">{service.name}</p>
             <div className="bg-white shadow-md rounded-lg p-4 w-[343px]">

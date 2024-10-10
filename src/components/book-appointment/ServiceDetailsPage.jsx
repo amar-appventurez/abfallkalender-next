@@ -21,11 +21,14 @@ const ServiceDetailsPage = async ({ serviceId }) => {
 
   transformedServiceDetails?.push(transformFeesDetails)
   return (
-    <div className="flex flex-col">
+    <>
       <Header name={fetchedDetails.name} category={fetchedDetails.category} />
-      <ServiceDetails serviceDetails={transformedServiceDetails} serviceId={serviceId} serviceName={fetchedDetails.name} serviceCategory={fetchedDetails.category} />
-      <></>
-    </div>
+
+      <div className="flex flex-col">
+        <div className="mt-[140px]"></div>
+        <ServiceDetails serviceDetails={transformedServiceDetails} serviceId={serviceId} serviceName={fetchedDetails.name} serviceCategory={fetchedDetails.category} />
+      </div>
+    </>
   );
 };
 
