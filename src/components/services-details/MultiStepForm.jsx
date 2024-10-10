@@ -97,7 +97,7 @@ const MultiStepForm = ({ serviceId, serviceName, serviceCategory }) => {
               <span>{multiStepT('personal-details')}</span>
             </div>
           </div>
-          <div className="px-4 py-[20px] w-full"><AppointmentCard serviceName={serviceName} serviceCategory={serviceCategory} /></div>
+          <div className="px-4 py-[20px] w-full pt-[4rem]"><AppointmentCard serviceName={serviceName} serviceCategory={serviceCategory} /></div>
           <PersonalDetails /></>;
       case 3:
         return (

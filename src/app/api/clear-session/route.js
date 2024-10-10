@@ -9,7 +9,7 @@ export async function GET(request) {
         // Perform redirection (server-side)
         const response= NextResponse.redirect(new URL('/home', request.url))
         // const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}home`);
-        cookies().delete('session')
+        // cookies().delete('session')
         console.log("Clearing session cookies explicitly")
         // response.cookies.delete('session');
         response.cookies.set('session', '', {

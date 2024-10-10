@@ -99,9 +99,9 @@ const Services = ({servicesData, filtersData}) => {
 
 
   return (
-    <div className="flex flex-col w-full bg-white fixed">
+    <div className="flex flex-col w-full bg-white">
       {/* HEADER */}
-      <div className="flex flex-row items-center py-[12px] px-[16px] w-[100vw]">
+      <div className="flex flex-row items-center py-[12px] px-[16px] w-[100vw] fixed justify-around bg-white">
         <div className="flex flex-grow justify-center">
           <span>{serviceT('service-categories')}</span>
         </div>
@@ -153,7 +153,7 @@ const Services = ({servicesData, filtersData}) => {
         {/* <CustomTabPanel value={value} index={0}> */}
           <div className="flex flex-col flex-grow bg-bg-secondary">
             {/* Filter Section */}
-            <div className="flex flex-row ml-[16px] my-[16px] gap-[8px] overflow-x-auto pb-[10px]">
+            <div className="flex flex-row ml-[16px] my-[16px] gap-[8px] overflow-x-auto pb-[10px] mb-[60px]">
               {filters.map((item, index) => (
                 <div
                   key={index}
