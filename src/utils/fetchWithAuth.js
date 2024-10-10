@@ -22,20 +22,20 @@ export const fetchWithAuth = async (url, options = {}) => {
     const locale = getLocale();
 
     if (!token) {
-        await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
-            method: "GET",
-          });
-          console.log("Back from clearing the session--token was missing");
+        // await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
+        //     method: "GET",
+        //   });
+        //   console.log("Back from clearing the session--token was missing");
           if (typeof window === 'undefined') {
             // Server-side redirection using Next.js redirect
             console.log("Server side redirection")
-            redirect("/home");  // Redirect to the home page
+            redirect("/");  // Redirect to the login page
         } else {
             // Client-side redirection
             console.log("Client side redirection")
-            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}home`;
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
         }
-        return { redirect: true }; // Indicate that a redirect is needed
+        return // Indicate that a redirect is needed
         // Optionally, return here to avoid further execution
         
       }
@@ -67,9 +67,9 @@ export const fetchWithAuth = async (url, options = {}) => {
           if (typeof window === 'undefined') {
             // Server-side redirection using Next.js redirect
             console.log("Server side redirection")
-            const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}home`);
-            cookies().delete('session')
-            console.log("Clearing session cookies explicitly")
+            const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);
+            // cookies().delete('session')
+            // console.log("Clearing session cookies explicitly")
             // response.cookies.delete('session');
             // response.cookies.set('session', '', {
             //     expires: new Date(0), // Set to a date in the past to delete the cookie
@@ -80,7 +80,7 @@ export const fetchWithAuth = async (url, options = {}) => {
         } else {
             // Client-side redirection
             console.log("Client side redirection")
-            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}home`;
+            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
         }
 
         // Optionally, return here to avoid further execution
