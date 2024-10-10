@@ -153,7 +153,7 @@ const Services = ({servicesData, filtersData}) => {
         {/* <CustomTabPanel value={value} index={0}> */}
           <div className="flex flex-col flex-grow bg-bg-secondary">
             {/* Filter Section */}
-            <div className="flex flex-row ml-[16px] my-[16px] gap-[8px] overflow-x-auto pb-[10px] mb-[60px]">
+            <div className="flex flex-row ml-[16px] my-[16px] gap-[8px] overflow-x-auto pb-[10px] mt-[60px]">
               {filters.map((item, index) => (
                 <div
                   key={index}
