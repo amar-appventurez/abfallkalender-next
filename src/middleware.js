@@ -20,8 +20,8 @@ export async function middleware(request) {
     if (!session) {
         console.log("Session not found, redirecting to auth");
         // return NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`); 
-        const loginUrl = new URL("/", request.url)
-        return NextResponse.redirect(loginUrl);
+        // const loginUrl = new URL("/", request.url)
+        // return NextResponse.redirect(loginUrl);
     }
     return NextResponse.next(); 
 }
