@@ -27,7 +27,7 @@ const MultiStepperBottomNextButton = ({ activeStep, stepsLength, getNextButtonLa
     return <>
         {activeStep < stepsLength - 1 && (
             <div className="px-[16px] py-[12px] h-[100px] z-10 fixed bottom-0 left-0 right-0 border-stepper-bottom-nav-border rounded-stepper-bottom-nav-radius border-border-color bg-white">
-                <Button className={"flex w-bottom-nav-button items-center justify-center px-4 py-2 border-none rounded-xl text-white bg-worms-blue"} variant="contained" color="primary"
+                <Button className={"flex w-[100%] items-center justify-center px-4 py-2 border-none rounded-xl text-white bg-worms-blue"} variant="contained" color="primary"
                     onClick={() =>
                         handleNext(activeStep,
                             {

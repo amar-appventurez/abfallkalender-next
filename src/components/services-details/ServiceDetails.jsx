@@ -89,7 +89,7 @@ const ServiceDetails = ({ serviceDetails, serviceId, serviceName, serviceCategor
         {serviceDetails?.map((service, index) => (
           <div key={index} className="col-span-1">
             <p className="font-bold-500 text-header-description-1 m-0 p-4">{service.name}</p>
-            <div className="bg-white shadow-md rounded-lg p-4 w-[343px]">
+            <div className="bg-white shadow-md rounded-lg p-4">
               <ul className="list-disc">
                 {service.description.map((item, index) => (
                   <li key={index} className='ml-4'>

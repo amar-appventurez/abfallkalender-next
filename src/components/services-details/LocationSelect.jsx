@@ -53,7 +53,7 @@ const LocationSelect = ({serviceId}) => {
           {locations?.map((location) => (
             <div
               key={location.id}
-              className={`flex flex-col border rounded-lg p-4 cursor-pointer hover:bg-gray-100 w-bottom-nav-button bg-white`}
+              className={`flex flex-col border rounded-lg p-4 cursor-pointer hover:bg-gray-100 w-[100%] bg-white`}
               onClick={() => handleCardClick(location.id)}
             >
 
