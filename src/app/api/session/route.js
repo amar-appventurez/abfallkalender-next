@@ -81,8 +81,15 @@ export async function GET(request) {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
         path: '/',
-        expires: new Date(Date.now() +  50 * 1000) // 50 sec
+        // expires: new Date(Date.now() +  50 * 1000) // 50 sec
     });
 
     return response;
 }
+
+export async function DELETE(request) {
+    // Clear cookies on logout
+    cookies().delete('session')
+  
+    return NextResponse.json({ success: true })
+  }

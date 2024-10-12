@@ -14,6 +14,18 @@ const getToken = async () => {
 };
 
 
+const handleRedirect = () => {
+    const redirectUrl = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`
+    if (typeof window === 'undefined') {
+        console.log("Server side redirection")
+        return NextResponse.redirect(redirectUrl)
+    } else {
+        console.log("Client side redirection")
+        window.location.href = redirectUrl;
+    }
+}
+
+
 
 
 // Custom fetch function
@@ -22,23 +34,22 @@ export const fetchWithAuth = async (url, options = {}) => {
     const locale = getLocale();
 
     if (!token) {
-        // await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
-        //     method: "GET",
-        //   });
-        //   console.log("Back from clearing the session--token was missing");
-          if (typeof window === 'undefined') {
-            // Server-side redirection using Next.js redirect
-            console.log("Server side redirection")
-            redirect("/");  // Redirect to the login page
-        } else {
-            // Client-side redirection
-            console.log("Client side redirection")
-            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
-        }
-        return // Indicate that a redirect is needed
-        // Optionally, return here to avoid further execution
-        
-      }
+        // // await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
+        // //     method: "GET",
+        // //   });
+        // //   console.log("Back from clearing the session--token was missing");
+        // if (typeof window === 'undefined') {
+        //     // Server-side redirection using Next.js redirect
+        //     console.log("Server side redirection")
+        //     redirect("/");  // Redirect to the login page
+        // } else {
+        //     // Client-side redirection
+        //     console.log("Client side redirection")
+        //     window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
+        // }
+        // return 
+        return handleRedirect() 
+    }
 
     // Set default headers
     const headers = {
@@ -55,39 +66,10 @@ export const fetchWithAuth = async (url, options = {}) => {
 
     // Check for 401 error and handle token expiration
     if (response.status === 401) {
-        console.log("Received 401, clearing session");
-       
-        // await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
-        //     method: "GET",
-        // });
-
-          console.log("Back from clearing the session");
-
-        //   return { redirect: true }; // Indicate that a redirect is needed
-          if (typeof window === 'undefined') {
-            // Server-side redirection using Next.js redirect
-            console.log("Server side redirection")
-            const response= NextResponse.redirect(`${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`);
-            // cookies().delete('session')
-            // console.log("Clearing session cookies explicitly")
-            // response.cookies.delete('session');
-            // response.cookies.set('session', '', {
-            //     expires: new Date(0), // Set to a date in the past to delete the cookie
-            //     path: '/',   
-            // });
-            return response; 
-            //redirect("/home");  // Redirect to the home page
-        } else {
-            // Client-side redirection
-            console.log("Client side redirection")
-            window.location.href = `${process.env.NEXT_SERVER ?? 'http://localhost:3000/'}`;
-        }
-
-        // Optionally, return here to avoid further execution
-        
-     
-           
-    }
+        console.log("Received 401, clearing session and redirecting")
+        await deleteSession();
+        return handleRedirect();
+      }
 
     // Check for response errors and handle accordingly
     if (!response.ok) {
