@@ -33,7 +33,7 @@ export async function createSession(userDetails) {
   cookies().set("session", session, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", // false for localhost, true for production
-    expires: expiresAt,
+    // expires: expiresAt,
     sameSite: "strict",
     path: "/",
   });
