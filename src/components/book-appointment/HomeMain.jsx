@@ -11,7 +11,7 @@ const HomeMain = ({userName}) => {
     {/* WELCOME */}
     <div className="flex flex-col mt-[20px] py-[9px] px-[16px]">
     <span className="text-title3 font-semiBold text-title-3">
-      {`${homeT('good-morning')} ${userName ?? 'Andrew'} `}
+      {`${homeT('good-morning')} ${userName ?? ''} `}
     </span>
     <span className="text-text-secondary font-normal text-header-description">
       {homeT('all-in-one')}

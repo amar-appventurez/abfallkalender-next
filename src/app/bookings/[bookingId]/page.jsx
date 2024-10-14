@@ -10,7 +10,7 @@ const page = async ({ params }) => {
     const bookingId = parseInt(params?.bookingId)
  
     const bookingDetails = await fetchBookingDetails(bookingId)
-    const transformedBookingDetails = bookingDetails["Service"]["ServiceDetails"]?.map((ele) => {
+    const transformedBookingDetails = bookingDetails?.["Service"]?.["ServiceDetails"]?.map((ele) => {
         return {
             name: ele.type,
             description: ele.description

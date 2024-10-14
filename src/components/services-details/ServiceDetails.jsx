@@ -91,7 +91,7 @@ const ServiceDetails = ({ serviceDetails, serviceId, serviceName, serviceCategor
             <p className="font-bold-500 text-header-description-1 m-0 p-4">{service.name}</p>
             <div className="bg-white shadow-md rounded-lg p-4">
               <ul className="list-disc">
-                {service.description.map((item, index) => (
+                {service?.description?.map((item, index) => (
                   <li key={index} className='ml-4'>
                     <p className="font-normal text-small-tight-regular ">{item}{service.name === "Fees" && <>{" "}<span className='font-bold-900'>{`€${service?.fee[index]}`}</span></>}</p>
                     {index !== service.description.length - 1 && <hr className="my-[5px] text-border-color width-[311px]" />}
