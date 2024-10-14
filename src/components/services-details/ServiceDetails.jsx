@@ -106,7 +106,7 @@ const ServiceDetails = ({ serviceDetails, serviceId, serviceName, serviceCategor
       {/* Select Location Button */}
       {!forDisplay && <div className="text-center mt-8">
 
-        <button className="flex items-center justify-center px-4 py-2 bg-worms-blue text-white border-none rounded-xl cursor-pointer relative w-bottom-nav-button h-bottom-nav-button"
+        <button className="flex items-center justify-center px-4 py-2 bg-worms-blue text-white border-none rounded-xl cursor-pointer relative w-[100%] h-bottom-nav-button"
           onClick={handleSelectLocation}>
           <span className="flex-1 text-center text-white">{serviceDTrans('select-location')}</span>
           <img className="cursor-pointer" src='chevron-right.svg' alt="back" />
