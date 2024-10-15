@@ -143,7 +143,7 @@ const BookingCard = ({ initialBookings }) => {
                 <span className="text-title3 font-bold-500 text-title-tight">
                   {item?.Service?.name}
                 </span>
-                <span className="py-[2px] px-[8px] bg-custom-blue-100 text-bg-booking-blue font-bold-500 text-title-5 rounded-md">
+                <span className="py-[2px] px-[8px] bg-custom-blue-100 text-bg-booking-blue font-bold-500 text-title-5 rounded-md w-fit">
                   {item?.Service?.category}
                 </span>
               </div>
