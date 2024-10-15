@@ -52,12 +52,16 @@ export async function middleware(req) {
     }
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     console.log("Decypted session cookie in middleware", decyptedSessionCookie)
-    const {userDetails:{token}}= decyptedSessionCookie;
+    const {userDetails:{token}}= decyptedSessionCookie ?? {};
     // If no token exists, redirect to the login page
     if (!token) {
       console.log("No token found");
-      url.pathname = '/';
-      return NextResponse.redirect(url);
+      console.log("Sending new login request to generate a token")
+      const response = NextResponse.redirect(process.env.NEXT_SERVER);
+
+      // Delete the session cookie if the token is expired
+      response.cookies.set('session', '', { maxAge: 0 });
+      return response;
     }
 
     // Decode the token to check its expiration

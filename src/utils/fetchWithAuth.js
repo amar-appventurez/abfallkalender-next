@@ -1,6 +1,7 @@
 import { cookies } from "next/headers"; // Adjust the import based on your project structure
 // import { deleteSession, getUserSession } from "../session";
 import { getLocale } from "next-intl/server";
+import { decrypt } from "@/session";
 // import { redirect } from "next/navigation";
 // import { NextResponse } from "next/server";
 
@@ -23,10 +24,10 @@ import { getLocale } from "next-intl/server";
 //     }
 // }
 
-const getSessionToken = () => {
+const getSessionToken =async () => {
     if (typeof window === 'undefined') {
         const cookieStore = cookies();
-        const session = cookieStore.get('session')?.value;
+        const session = await decrypt(cookieStore.get('session')?.value);
         return session?.userDetails?.token
     } else {
         const match = document.cookie.match(new RegExp('(^| )session=([^;]+)'));
@@ -39,7 +40,7 @@ const getSessionToken = () => {
 // Custom fetch function
 export const fetchWithAuth = async (url, options = {}) => {
     // const token = await getToken();
-    const token = getSessionToken();
+    const token =await getSessionToken();
     const locale = getLocale();
 
     // if (!token) {
