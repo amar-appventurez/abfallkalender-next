@@ -46,7 +46,7 @@ export async function middleware(req) {
     url = req.nextUrl.clone(); // Clone the Next.js URL object
 
     //await 2 sec on root path
-    if(url.pathname==='/'){
+    if(url.pathname==='/' && url.pathname==='/home'){
       await new Promise((resolve,reject)=>[
         setTimeout(()=>{
           resolve();
