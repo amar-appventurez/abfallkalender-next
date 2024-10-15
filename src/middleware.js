@@ -45,14 +45,6 @@ export async function middleware(req) {
     
     url = req.nextUrl.clone(); // Clone the Next.js URL object
 
-    //await 2 sec on root path
-    if(url.pathname==='/' && url.pathname==='/home'){
-      await new Promise((resolve,reject)=>[
-        setTimeout(()=>{
-          resolve();
-        })
-      ])
-    }
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     console.log("Decypted session cookie in middleware", decyptedSessionCookie)
     const {userDetails:{token}}= decyptedSessionCookie ?? {userDetails:{}};

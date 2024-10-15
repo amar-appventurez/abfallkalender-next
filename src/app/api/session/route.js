@@ -58,13 +58,13 @@ export async function GET(request) {
     if (!oauthToken) {
         return NextResponse.redirect('/');  // Handle OAuth failure
     }
-    const decryptedToken = await decryptToken(oauthToken); 
-    if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
-        return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });
-    }
+    // const decryptedToken = await decryptToken(oauthToken); 
+    // if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
+    //     return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });
+    // }
     // Use the token and user data to create a session
     const userDetails = {
-        token: oauthToken,
+        token: decryptedToken,
         userName,
         email
     };
@@ -75,11 +75,12 @@ export async function GET(request) {
     const sessionToken = await createSession(userDetails);
 
     // Set the session cookie in the response
-    const redirectUrl = new URL('/',request.url)
+    const redirectUrl = new URL('/home',request.url)
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
     response.cookies.set('session', sessionToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        // secure: process.env.NODE_ENV === 'production',
+        secure:false,
         sameSite: 'strict',
         path: '/',
         // expires: new Date(Date.now() +  50 * 1000) // 50 sec
