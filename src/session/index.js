@@ -32,10 +32,10 @@ export async function createSession(userDetails) {
 
   cookies().set("session", session, {
     httpOnly: true,
-    // secure: process.env.NODE_ENV === "production", // false for localhost, true for production
+    secure: process.env.NODE_ENV === "production", // false for localhost, true for production
     // expires: expiresAt,
     sameSite: "strict",
-    secure:false,
+    // secure:false,
     path: "/",
   });
 
