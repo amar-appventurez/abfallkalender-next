@@ -34,7 +34,7 @@ export async function createSession(userDetails) {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", // false for localhost, true for production
     // expires: expiresAt,
-    sameSite: "strict",
+    sameSite: "lax",
     // secure:false,
     path: "/",
   });
