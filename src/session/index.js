@@ -37,6 +37,14 @@ export async function createSession(userDetails) {
     sameSite: "strict",
     path: "/",
   });
+
+  // Now also explicitly accessible on /home
+  cookies().set("session", session, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    path: "/home", 
+  });
   
   // console.log("Server side cookie is set...returning session value")
   return session;
