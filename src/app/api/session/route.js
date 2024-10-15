@@ -77,13 +77,13 @@ export async function GET(request) {
     // Set the session cookie in the response
     const redirectUrl = new URL('/home',request.url)
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
-    response.cookies.set('session', sessionToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        path: '/',
-        // expires: new Date(Date.now() +  50 * 1000) // 50 sec
-    });
+    // response.cookies.set('session', sessionToken, {
+    //     httpOnly: true,
+    //     secure: process.env.NODE_ENV === 'production',
+    //     sameSite: 'strict',
+    //     path: '/',
+    //     // expires: new Date(Date.now() +  50 * 1000) // 50 sec
+    // });
 
     return response;
 }
