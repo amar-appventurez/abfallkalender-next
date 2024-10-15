@@ -1,7 +1,7 @@
 import { cookies } from "next/headers"; // Adjust the import based on your project structure
 // import { deleteSession, getUserSession } from "../session";
 import { getLocale } from "next-intl/server";
-import { decrypt } from "@/session";
+import { decrypt } from "../session";
 // import { redirect } from "next/navigation";
 // import { NextResponse } from "next/server";
 
