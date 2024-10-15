@@ -6,7 +6,7 @@
 // export async function middleware(request) {
 
 //     const { pathname } = new URL(request.url);
-//     console.log(pathname)
+//     console.log(pathname) 
     
    
 //     // Skip session checking for the base path '/'
@@ -45,6 +45,14 @@ export async function middleware(req) {
     
     url = req.nextUrl.clone(); // Clone the Next.js URL object
 
+    //await 2 sec on root path
+    if(url.pathname==='/'){
+      await new Promise((resolve,reject)=>[
+        setTimeout(()=>{
+          resolve();
+        })
+      ])
+    }
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     console.log("Decypted session cookie in middleware", decyptedSessionCookie)
     const {userDetails:{token}}= decyptedSessionCookie ?? {userDetails:{}};
@@ -54,6 +62,7 @@ export async function middleware(req) {
     // Allow access to the login route without authentication
     if (url.pathname === '/' || url.pathname.startsWith('/api/session') || ['/api/session'].includes(url.pathname)) {
         console.log(url.pathname)
+        
         if(token){
             return NextResponse.redirect('/home') 
         }
@@ -98,5 +107,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/home','/bookings','/services','/service-details','/book-service','/','/api/session'],  //middleware apply on the paths(specific routes)
+  matcher: ['/home','/bookings','/services','/service-details','/book-service','/'],  //middleware apply on the paths(specific routes)
 };

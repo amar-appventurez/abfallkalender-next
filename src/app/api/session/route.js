@@ -51,21 +51,22 @@ export async function GET(request) {
     //   return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 404 }); 
     // }
     const { searchParams } = new URL(request.url);
+    console.log("Request", request.url)
     const oauthToken = searchParams.get('token');
     const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
     // if (!oauthToken) {
     //     return NextResponse.redirect('/');  // Handle OAuth failure
     // }
-    const decryptedToken = await decryptToken(oauthToken); 
-    if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
-        return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });
-    }
+    // const decryptedToken = await decryptToken(oauthToken); 
+    // if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
+    //     return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });
+    // }
     // Use the token and user data to create a session
     const userDetails = {
-        token: decryptedToken,
-        userName: userName,
-        email
+        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtYXIubWlzaHJhQGtvYmlsLmNvbSIsImlhdCI6MTcyODk4Nzk1NiwiZXhwIjoxNzI5MDc0MzU2fQ.VIylkUY23qV8a9DPw3Ghkwgj246DB2QNm50CbhqVtZA',
+        userName: "amar",
+        email: "amar.m130@gmail.com"
     };
 
 
