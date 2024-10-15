@@ -30,13 +30,13 @@ export async function createSession(userDetails) {
   // const session = await encrypt({ userDetails, expiresAt });
   const session = await encrypt({ userDetails });
 
-  cookies().set("session", session, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // false for localhost, true for production
-    // expires: expiresAt,
-    sameSite: "strict",
-    path: "/",
-  });
+  // cookies().set("session", session, {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === "production", // false for localhost, true for production
+  //   // expires: expiresAt,
+  //   sameSite: "strict",
+  //   path: "/",
+  // });
   
   // console.log("Server side cookie is set...returning session value")
   return session;

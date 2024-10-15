@@ -47,7 +47,7 @@ export async function middleware(req) {
 
     // Allow access to the login route without authentication
     if (url.pathname === '/' || url.pathname.startsWith('/api/session') || ['/api/session'].includes(url.pathname)) {
-        console.log()
+        console.log(url.pathname)
         return NextResponse.next();
     }
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
