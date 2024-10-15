@@ -1,13 +1,24 @@
 
 import { Endpoints } from "../constants/Endpoint";
 import { redirect } from "next/navigation";
-import {getUserSession} from '../session';
+import {decrypt, getUserSession} from '../session';
+import { cookies } from "next/headers";
 export default async function Root() {
-  const session= await getUserSession();
-  console.log("Session found in root path", session)
-  console.log("Redirecting to oauth server");
+  const cookieStore= cookies();
+  let isTokenSet=false;
+  try{
+    const {userDetails:{token}} =await decrypt(cookieStore.get('session')?.value);
+    if(token) isTokenSet=true
+  }
+  catch{
+    isTokenSet=false;
+  }
+
+  console.log("Is token set", isTokenSet)
+  
  
-  if(!session){  
+  if(!isTokenSet){  
+    console.log("Redirecting to oauth server");
     redirect(`${Endpoints.baseUrl}/auth/login`);
   }
   // // redirect(`${process.env.NEXT_SERVER}home`);

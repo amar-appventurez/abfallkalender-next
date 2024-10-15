@@ -45,6 +45,7 @@ export async function middleware(req) {
     
     url = req.nextUrl.clone(); // Clone the Next.js URL object
 
+    // const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     console.log("Decypted session cookie in middleware", decyptedSessionCookie)
     const {userDetails:{token}}= decyptedSessionCookie ?? {userDetails:{}};
@@ -54,16 +55,12 @@ export async function middleware(req) {
     // Allow access to the login route without authentication
     if (url.pathname === '/' || url.pathname.startsWith('/api/session') || ['/api/session'].includes(url.pathname)) {
         console.log(url.pathname)
-        
-        if(token){
-            return NextResponse.redirect('/home') 
-        }
         return NextResponse.next();
     }
     if (!token) {
         console.log("No token found");
         console.log("Sending new login request to generate a token")
-        const response = NextResponse.redirect(process.env.NEXT_SERVER);
+        const response = NextResponse.redirect('/');
   
         // Delete the session cookie if the token is expired
         response.cookies.set('session', '', { maxAge: 0 });
@@ -99,5 +96,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/home','/bookings','/services','/service-details','/book-service','/'],  //middleware apply on the paths(specific routes)
+  matcher: ['/home','/bookings','/services','/service-details','/book-service','/','/api/session'],  //middleware apply on the paths(specific routes)
 };
