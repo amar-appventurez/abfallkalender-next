@@ -45,11 +45,6 @@ export async function middleware(req) {
     
     url = req.nextUrl.clone(); // Clone the Next.js URL object
 
-    // Allow access to the login route without authentication
-    if (url.pathname === '/' || url.pathname.startsWith('/api/session') || ['/api/session'].includes(url.pathname)) {
-        console.log(url.pathname)
-        return NextResponse.next();
-    }
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     console.log("Decypted session cookie in middleware", decyptedSessionCookie)
     const {userDetails:{token}}= decyptedSessionCookie ?? {};
@@ -63,6 +58,16 @@ export async function middleware(req) {
       response.cookies.set('session', '', { maxAge: 0 });
       return response;
     }
+
+    // Allow access to the login route without authentication
+    if (url.pathname === '/' || url.pathname.startsWith('/api/session') || ['/api/session'].includes(url.pathname)) {
+        console.log(url.pathname)
+        if(!token){
+            return NextResponse.next();
+        }
+        return NextResponse.redirect('/home');
+    }
+   
 
     // Decode the token to check its expiration
     const decodedToken = decodeJwt(token);
