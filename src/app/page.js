@@ -5,10 +5,10 @@ import {getUserSession} from '../session';
 export default async function Root() {
   const session= await getUserSession();
   console.log("Redirecting to oauth server");
-  redirect(`${Endpoints.baseUrl}/auth/login`);
-  // if(!session){  
-    
-  // }
+ 
+  if(!session){  
+    redirect(`${Endpoints.baseUrl}/auth/login`);
+  }
   // // redirect(`${process.env.NEXT_SERVER}home`);
-  // redirect('/home')
+  redirect('/home')
 }

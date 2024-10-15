@@ -47,27 +47,27 @@ export async function middleware(req) {
 
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     console.log("Decypted session cookie in middleware", decyptedSessionCookie)
-    const {userDetails:{token}}= decyptedSessionCookie ?? {};
+    const {userDetails:{token}}= decyptedSessionCookie ?? {userDetails:{}};
     // If no token exists, redirect to the login page
-    if (!token) {
-      console.log("No token found");
-      console.log("Sending new login request to generate a token")
-      const response = NextResponse.redirect(process.env.NEXT_SERVER);
-
-      // Delete the session cookie if the token is expired
-      response.cookies.set('session', '', { maxAge: 0 });
-      return response;
-    }
+ 
 
     // Allow access to the login route without authentication
     if (url.pathname === '/' || url.pathname.startsWith('/api/session') || ['/api/session'].includes(url.pathname)) {
         console.log(url.pathname)
-        if(!token){
-            return NextResponse.next();
+        if(token){
+            return NextResponse.redirect('/home') 
         }
-        return NextResponse.redirect('/home');
+        return NextResponse.next();
     }
-   
+    if (!token) {
+        console.log("No token found");
+        console.log("Sending new login request to generate a token")
+        const response = NextResponse.redirect(process.env.NEXT_SERVER);
+  
+        // Delete the session cookie if the token is expired
+        response.cookies.set('session', '', { maxAge: 0 });
+        return response;
+      }
 
     // Decode the token to check its expiration
     const decodedToken = decodeJwt(token);
