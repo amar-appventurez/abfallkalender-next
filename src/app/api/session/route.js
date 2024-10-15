@@ -64,9 +64,9 @@ export async function GET(request) {
     // }
     // Use the token and user data to create a session
     const userDetails = {
-        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtYXIubWlzaHJhQGtvYmlsLmNvbSIsImlhdCI6MTcyODk4Nzk1NiwiZXhwIjoxNzI5MDc0MzU2fQ.VIylkUY23qV8a9DPw3Ghkwgj246DB2QNm50CbhqVtZA',
-        userName: "amar",
-        email: "amar.m130@gmail.com"
+        token: oauthToken,
+        userName,
+        email
     };
 
 
