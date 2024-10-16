@@ -58,7 +58,7 @@ const TimingTabs = () => {
   return (
     <>
     
-    <div className="container mx-auto px-4 py-8 max-w-9xl bg-bg-secondary flex flex-col gap-[24px]">
+    <div className="container mx-auto px-4 py-8 max-w-9xl bg-bg-secondary flex flex-col gap-[24px] pb-[120px]">
       {timings.map((timing, timingIndex) => (
         <div key={timing.id} className='flex flex-col gap-[16px]'>
           <span className="font-bold-500 text-header-description-1">{timing.period}</span>
