@@ -90,7 +90,8 @@ export const fetchWithAuth = async (url, options = {}) => {
     // Check for response errors and handle accordingly
     if (!response.ok) {
         // You can add additional error handling logic here
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        console.log(await response.json());
+        throw new Error(`HTTP error! Status: ${response.status} ${response.message}`);
     }
 
     return response;

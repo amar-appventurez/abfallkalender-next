@@ -18,8 +18,8 @@ const Loading = () => {
           <div className='flex gap-[12px]'>
             <img src="/square-user-round.svg" alt="user-icon"></img>
             <div className='flex flex-col'>
-              <span className='text-small-tight-regular text-bold-500'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className='text-bg-booking-blue text-title-5 py-[2px] px-[8px] bg-custom-blue-100 rounded-md w-fit-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className='text-small-tight-regular text-bold-500 animate-pulse'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+              <span className='text-bg-booking-blue text-title-5 py-[2px] px-[8px] bg-custom-blue-100 rounded-md w-fit-content animate-pulse'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;</span>
             </div>
           </div>
           <hr className='text-text-secondary' />
@@ -28,7 +28,7 @@ const Loading = () => {
             <div className='flex gap-1'>
               <img className='w-[18px]' src='/calendar-clock.svg'></img>
               <div className='flex flex-col'>
-                <span className='text-title-6 text-bold-500 text-title3 animate-pulse'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;;&nbsp;&nbsp;</span>
+                <span className='text-title-6 text-bold-500 text-title3 animate-pulse'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
                 {/* <span className='text-text-secondary text-title-7 text-normal'>{"Show time here"}</span> */}
               </div>
             </div>

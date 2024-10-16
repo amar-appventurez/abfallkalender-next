@@ -21,7 +21,7 @@ const BookingDetialsMain = ({ bookingDetails }) => {
                     <div className='flex gap-1'>
                         <img className='w-[18px]' src='/calendar-clock.svg'></img>
                         <div className='flex flex-col'>
-                            <span className='text-title-6 text-bold-500 text-title3'>{getFromatedTimeFromUTCString(bookingDetails?.utc)}</span>
+                            <span className='text-title-6 text-bold-500 text-title3'>{getFromatedTimeFromUTCString(bookingDetails?.date_and_time)}</span>
                             {/* <span className='text-text-secondary text-title-7 text-normal'>{"Show time here"}</span> */}
                         </div>
                     </div>

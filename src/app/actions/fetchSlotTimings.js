@@ -23,7 +23,7 @@ export const fetchSlotTimings = async () => {
         {
           id: 3,
           period: 'Evening 5:00-6:00',
-          slots: ['5:00', '5:15', '5:30', '5:45'],
+          slots: ['17:00', '15:15', '17:30', '17:45'],
         },
       ];
       resolve(timings);

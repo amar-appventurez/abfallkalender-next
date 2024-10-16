@@ -10,8 +10,8 @@ import { getDateConversionForBookingCard } from '../utils/timeCalculation';
 import { useTranslations } from 'next-intl';
 import {Loading} from "../app/bookings/loading"
 
-const BookingCard = ({ initialBookings }) => {
-  const [bookData, setBookData] = useState(initialBookings);
+const BookingCard = () => {
+  const [bookData, setBookData] = useState();
   const [page, setPage] = useState(1); // Start from page 1 for each filter
   const [hasMore, setHasMore] = useState(true); // Assume there is more data to load
   const observer = useRef(null); // Use null as the initial value for observer
