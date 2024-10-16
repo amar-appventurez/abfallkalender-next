@@ -42,7 +42,7 @@ const MultiStepForm = ({ serviceId, serviceName, serviceCategory }) => {
       try {
         //make api call
         const { firstName, familyName, email, phoneWithOutCountry: phone, declaration, countryCode, locationId,dateAndTime } = formData
-        console.log("data time sent is", dateAndTime)  
+  
         await bookNewAppointment({
             firstName,
           familyName,

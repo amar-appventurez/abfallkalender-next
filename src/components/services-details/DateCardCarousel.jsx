@@ -111,7 +111,7 @@ const DateCardCarousel = () => {
       : `Select Year`;
 
   return (
-    <div className="w-full max-w-screen-lg mx-auto p-4 bg-white">
+    <div className="w-full max-w-screen-lg mx-auto p-4 bg-white pt-[48px]">
     
         <button
           onClick={handleDropdownToggle}
