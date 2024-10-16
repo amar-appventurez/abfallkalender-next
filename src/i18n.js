@@ -10,18 +10,32 @@ export default getRequestConfig(async () => {
     locale = acceptLanguage.split(",")[0] || "en";
   }
 
-  //   console.log('locale ---', locale);
+  // Normalize the locale to handle language variants
+  const baseLocale = locale.split("-")[0];
+
+  // Map any variant of a language to its corresponding file
+  const localeMap = {
+    tr: 'tr',  // Turkish variants
+    en: 'en',  // English variants
+    fr: 'fr',  // French variants
+    de: 'de',  //German variants
+    ar: 'ar'
+    // Add more languages as needed
+  };
+
+  // Use the mapped locale or fall back to 'en'
+  const normalizedLocale = localeMap[baseLocale] || 'en';
+
   let messages;
   try {
-    // Try to load messages for the requested locale
-    messages = (await import(`../messages/${locale}.json`)).default;
+    messages = (await import(`../messages/${normalizedLocale}.json`)).default;
   } catch (error) {
-    // Fallback to English if the requested locale messages are not available
+    // Fallback to 'en' if locale-specific messages are not found
     messages = (await import(`../messages/en.json`)).default;
   }
 
   return {
-    locale,
-    messages
+    locale: normalizedLocale,
+    messages,
   };
 });
