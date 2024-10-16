@@ -43,7 +43,7 @@ const LocationSelect = ({serviceId}) => {
   return (
     <>
       <div className="flex flex-row items-center py-[12px] px-[16px] bg-white fixed w-[100vw]">
-        <img className="cursor-pointer" src='chevron-left.svg' alt="back" onClick={() => { router.push('/service-details') }} />
+        <img className="cursor-pointer" src='chevron-left.svg' alt="back" onClick={() => { router.push(`/service-details?serviceId=${serviceId}`) }} />
         <div className="flex flex-grow justify-center">
           <span>{multiT('select-location')}</span>
         </div>
