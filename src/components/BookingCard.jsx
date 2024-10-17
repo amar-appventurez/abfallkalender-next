@@ -130,6 +130,7 @@ const BookingCard = () => {
 
       {bookData?.map((item, index) => {
         const isLastItem = bookData.length - 1 === index;
+        const isUpcoming = filters.filter(filterItem => filterItem?.id == item?.status)[0]?.id == 1
         return (
           <div
             className="flex flex-col p-[16px] bg-white rounded-xl mt-[20px]"
@@ -157,7 +158,7 @@ const BookingCard = () => {
                     <span className="text-text-secondary font-normal text-title-7">{item['date_and_time']?.split()[1]}</span>
                   </div>
                 </div>
-                <div className="bg-bg-upcoming py-[2px] px-[8px] rounded-md text-bg-booking-blue font-bold-500 text-title-5 flex items-center justify-center">
+                <div className={`${isUpcoming ? "bg-bg-upcoming" : "bg-bg-completed"} py-[2px] px-[8px] rounded-md text-bg-booking-blue font-bold-500 text-title-5 flex items-center justify-center`}>
                   {filters.filter(filterItem => filterItem?.id == item?.status)[0]?.name}
                 </div>
               </div>

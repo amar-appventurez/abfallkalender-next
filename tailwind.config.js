@@ -35,6 +35,7 @@ module.exports = {
       'custom-blue-100': '#CCE4FF',
       'bg-booking-blue': '#192C61',
       'bg-upcoming': '#FFBD70',
+      'bg-completed': '#8AF4C6',
       'cyan-200': '#BDEBFB',
       'orange-200': '#FFD7AB',
       'blue-200': '#9AC9FE',
