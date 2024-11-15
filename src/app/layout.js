@@ -1,11 +1,9 @@
 import "./globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import { cookies, headers } from 'next/headers';
 
-import 'slick-carousel/slick/slick.css'; // Slick carousel styles
-import 'slick-carousel/slick/slick-theme.css'; // Slick carousel theme styles
-import BottomNavHandler from "../components/BottomNavHandler"; // Client-side handler for BottomNav
+
+
 
 export const metadata = {
   title: "Booking Appointment",
@@ -23,7 +21,6 @@ export default async function RootLayout({ children }) {
         <NextIntlClientProvider messages={messages}>
           {children}
           {/* Pass the initial hideBottomNav state to the client handler */}
-          <BottomNavHandler/>
         </NextIntlClientProvider>
       </body>
     </html>
