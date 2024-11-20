@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createSession } from "../../../session";
 import { decryptToken, isValidUTF8 } from "../../../constants/common";
+import { add } from "date-fns";
 
 
 /** Handler for post route for actual callback for backend redirection after 
@@ -55,6 +56,8 @@ export async function GET(request) {
     const oauthToken = searchParams.get('token');
     const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
+    const address = searchParams.get('address');
+    console.log("Address from idp",address);
     // if (!oauthToken) {
     //     return NextResponse.redirect('/');  // Handle OAuth failure
     // }
@@ -73,7 +76,8 @@ export async function GET(request) {
     const userDetails = {
         token: decryptedToken,
         userName,
-        email
+        email,
+        address
     };
 
     
