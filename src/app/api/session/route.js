@@ -72,7 +72,6 @@ export async function GET(request) {
     if(consent && consent.toLowerCase() === 'false'){
         return NextResponse.redirect('https://www.ebwo.de/de/abfallkalender/2024');
     }
-   ¸
     const decryptedToken = await decryptToken(oauthToken); 
     if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
         return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });
