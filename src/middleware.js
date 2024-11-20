@@ -47,8 +47,8 @@ export async function middleware(req) {
 
     // const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
-    console.log("Decypted session cookie in middleware", decyptedSessionCookie)
-    console.log("Address from idp",decyptedSessionCookie?.userDetails?.street_address);
+    // console.log("Decypted session cookie in middleware", decyptedSessionCookie)
+
     const {userDetails:{token}}= decyptedSessionCookie ?? {userDetails:{}};
     // If no token exists, redirect to the login page
  
@@ -97,5 +97,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/home','/bookings','/services','/service-details','/book-service','/','/api/session'],  //middleware apply on the paths(specific routes)
+  matcher: ['/home','/','/api/session'],  //middleware apply on the paths(specific routes)
 };
