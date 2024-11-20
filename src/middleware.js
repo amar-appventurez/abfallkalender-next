@@ -48,6 +48,7 @@ export async function middleware(req) {
     // const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     const decyptedSessionCookie = await decrypt(req.cookies.get('session')?.value);
     console.log("Decypted session cookie in middleware", decyptedSessionCookie)
+    console.log("Address from idp",decyptedSessionCookie?.userDetails?.street_address);
     const {userDetails:{token}}= decyptedSessionCookie ?? {userDetails:{}};
     // If no token exists, redirect to the login page
  

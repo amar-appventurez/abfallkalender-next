@@ -56,8 +56,8 @@ export async function GET(request) {
     const oauthToken = searchParams.get('token');
     const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
-    const address = searchParams.get('address');
-    console.log("Address from idp",address);
+    const streetAddress = searchParams.get('street_address');
+ 
     // if (!oauthToken) {
     //     return NextResponse.redirect('/');  // Handle OAuth failure
     // }
@@ -77,9 +77,8 @@ export async function GET(request) {
         token: decryptedToken,
         userName,
         email,
-        address
+        streetAddress
     };
-
     
     // Create the session with the token
     const sessionToken = await createSession(userDetails);
