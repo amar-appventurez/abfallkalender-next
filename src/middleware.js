@@ -58,6 +58,13 @@ export async function middleware(req) {
         console.log(url.pathname)
         return NextResponse.next();
     }
+    
+    // special condition and token not found
+    if(!token && url.pathname.startsWith('/home')){
+      const response = NextResponse.redirect('https://www.ebwo.de/de/abfallkalender/2024');
+      return response;
+    }
+
     if (!token) {
         console.log("No token found");
         console.log("Sending new login request to generate a token")

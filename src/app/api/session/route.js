@@ -57,6 +57,8 @@ export async function GET(request) {
     const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
     const streetAddress = searchParams.get('street_address');
+
+    const consent = searchParams.get('consent');
  
     // if (!oauthToken) {
     //     return NextResponse.redirect('/');  // Handle OAuth failure
@@ -68,6 +70,10 @@ export async function GET(request) {
     //     userName: "amar",
     //     email:"amar.m130@gmail.com"
     // };
+
+    if(!consent){
+        redirect('https://www.ebwo.de/de/abfallkalender/2024');
+    }
 
     const decryptedToken = await decryptToken(oauthToken); 
     if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
