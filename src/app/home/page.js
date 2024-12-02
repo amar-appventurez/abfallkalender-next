@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { decrypt, getUserSession } from '../../session';
 import { fetchAddressesList } from '../actions/fetchAddressesList';
-fetchDetails
 const page = async () => {
     const cookieStore = cookies();
     const { userDetails: { streetAddress } } = await decrypt(cookieStore.get('session')?.value);
