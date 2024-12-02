@@ -52,6 +52,7 @@ export async function GET(request) {
     //   return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 404 }); 
     // }
     const { searchParams } = new URL(request.url);
+    console.log("Request", request.url)
     const oauthToken = searchParams.get('token');
     const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')

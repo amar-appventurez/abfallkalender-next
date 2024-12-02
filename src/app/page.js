@@ -19,11 +19,6 @@ export default async function Root() {
     console.log("Redirecting to oauth server");
     redirect(`${Endpoints.baseUrl}/auth/login`);
   }
- 
-   const searchResult = [{id: '23829382938.2389238',name: 'Dietrich-Bonhoeffer-Straße'}]    // find from scrapping
-   //consent given
-
-   //add missing case for when search term does not have any result
 
   redirect('/home')
 

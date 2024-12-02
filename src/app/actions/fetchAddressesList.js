@@ -7,15 +7,15 @@ import { cache } from "react";
 import { redirect } from "next/navigation";
 // import { decryptToken } from "../n";
 
-export const bookNewAppointment=async (body)=>{
+export const fetchAddressesList=async (streetName)=>{
+  const params = new URLSearchParams({
+    address: streetName,
+  });
+  const url = `${Endpoints.baseUrl}/street/scrape?${params}`;
 
-  const url = `${Endpoints.baseUrl}/booking`;
 
   // const token=(await getUserSession())?.userDetails?.token
-    const response = await fetchWithAuth(url, {
-      method: 'POST', 
-      body: JSON.stringify(body),
-    });
+    const response = await fetchWithAuth(url);
 
     if (response.redirect) {
       // Perform the redirection
@@ -26,7 +26,7 @@ export const bookNewAppointment=async (body)=>{
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     
-    // const data = await response.json();
-    // return data.result.rows;
+    const data = await response.json();
+    return data.result;
  
 }

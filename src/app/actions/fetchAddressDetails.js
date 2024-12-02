@@ -4,17 +4,15 @@ import {Endpoints} from "../../constants/Endpoint"
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
 import { redirect } from "next/navigation";
 
-  export const fetchBookingDetails = async (bookingId) => {
+  export const fetchAddressDetails = async (id) => {
 
 
     const params = new URLSearchParams({
-      bookingId,
-      page:1,
-      size:1
+      id
     });
   
     // const url = `${Endpoints.baseUrl}/location?${params}`;
-    const url = `${Endpoints.baseUrl}/booking?${params}`;
+    const url = `${Endpoints.baseUrl}/street/details/scrape?${params}`;
     try {
       const response = await fetchWithAuth(url, {
         method: 'GET', 
