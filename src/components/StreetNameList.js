@@ -20,7 +20,7 @@ const StreetNameList = ({addressesList}) => {
 
   const handleButtonClick = (url) => {
     // Redirect to the URL when a button is clicked
-    router.push(url);
+    router.push(`https://ebwo.de${url}`);
   };
 
   return (
