@@ -11,7 +11,7 @@ export const fetchAddressesList=async (streetName)=>{
   const params = new URLSearchParams({
     address: streetName,
   });
-  const url = `${Endpoints.baseUrl}/street/scrape?${params}`;
+  const url = `${Endpoints.baseUrl}/street/list?${params}`;
 
 
   // const token=(await getUserSession())?.userDetails?.token

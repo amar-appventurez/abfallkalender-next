@@ -46,7 +46,7 @@ module.exports = {
       "worms-blue": "#015FCB"
     },
     fontSize: {
-      'title-3': ['24px', '32px'],
+      'title-3': ['20px', '20px'],
       'title-large': ['18px', '22px'],
       'title-large-1': ['18px', '26px'],
       'title-small': ['14px', '14px'],

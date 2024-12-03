@@ -12,7 +12,6 @@ const StreetNameList = ({addressesList}) => {
 
   useEffect(()=>{
     if(addressesList){
-        console.log("Addresses list",addressesList);
         setData(addressesList);
     }
 
@@ -20,18 +19,18 @@ const StreetNameList = ({addressesList}) => {
 
   const handleButtonClick = (url) => {
     // Redirect to the URL when a button is clicked
-    router.push(`https://ebwo.de${url}`);
+    router.push(`/view-details?dataUrl=${url}`);
   };
 
   return (
-    <div className="p-4 flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-4">Select your street</h1>
+    <div className="flex flex-col items-center mt-12 p-4 rounded w-[75%] mx-auto border border-[#debba2] bg-[#f5deb385]">
+      <h1 className="text-lg font-semiBold mb-4">Select your street</h1>
       <div className="space-y-3">
         {data?.map((item, index) => (
           <button
             key={index}
             onClick={() => handleButtonClick(item.dataUrl)}
-            className="w-full py-2 px-4 text-white bg-bg-booking-blue hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-lg transition duration-300"
+            className="w-full py-2 px-4 text-white bg-[#217cb5] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-lg transition duration-300"
           >
             {item.placeholder}
           </button>

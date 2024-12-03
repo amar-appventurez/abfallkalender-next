@@ -4,15 +4,15 @@ import {Endpoints} from "../../constants/Endpoint"
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
 import { redirect } from "next/navigation";
 
-  export const fetchAddressDetails = async (id) => {
+  export const fetchAddressDetails = async (dataUrl) => {
 
 
     const params = new URLSearchParams({
-      id
+      streetUrl: dataUrl
     });
   
     // const url = `${Endpoints.baseUrl}/location?${params}`;
-    const url = `${Endpoints.baseUrl}/street/details/scrape?${params}`;
+    const url = `${Endpoints.baseUrl}/street/detail?${params}`;
     try {
       const response = await fetchWithAuth(url, {
         method: 'GET', 
@@ -30,7 +30,7 @@ import { redirect } from "next/navigation";
       }
       const data = await response.json();
 
-      return data.result.rows[0];
+      return data.result;
       
     } catch (error) {
       console.error('Fetch error:', error);
