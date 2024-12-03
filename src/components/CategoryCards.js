@@ -24,7 +24,7 @@ const CategoryCards = ({addressDetails}) => {
         {categoryData?.map(({ id, categoryName }) => (
           <div
             key={id}
-            className={`px-4 cursor-pointer transition-all duration-300 ${
+            className={`rounded-lg px-4 cursor-pointer transition-all duration-300 ${
               activeCard === id
                 ? 'bg-[#f5deb3] py-[0.5rem]'
                 : 'bg-bg-secondary'

@@ -23,7 +23,7 @@ const StreetNameList = ({addressesList}) => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-12 p-4 rounded w-[75%] mx-auto border border-[#debba2] bg-[#f5deb385]">
+    <div className="flex flex-col items-center mt-12 p-4 rounded-lg w-[75%] mx-auto border border-[#debba2] bg-[#f5deb385]">
       <h1 className="text-lg font-semiBold mb-4">Select your street</h1>
       <div className="space-y-3">
         {data?.map((item, index) => (
