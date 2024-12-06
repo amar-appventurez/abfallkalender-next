@@ -58,7 +58,9 @@ module.exports = {
       '': ['16px', '20px'],
       "small-tight-regular": ['14px', '20px'],
       "large-none-semibold": ["18px", "18px"],
-      "regular-normal-medium":["16px","24px"]
+      "regular-normal-medium":["16px","24px"],
+      "title-main": ["24px","32px"],
+      "title-not-found-1": ["16px","26px"]
 
     },
     fontWeight: {

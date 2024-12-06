@@ -3,6 +3,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import {default as BgImage} from 'next/image';
 
 const StreetNameList = ({addressesList}) => {
 
@@ -23,19 +24,18 @@ const StreetNameList = ({addressesList}) => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-12 p-4 rounded-lg w-[75%] mx-auto border border-[#debba2] bg-[#f5deb385]">
-      <h1 className="text-lg font-semiBold mb-4">Select your street</h1>
-      <div className="space-y-3">
+    <div className="flex flex-col gap-2 my-[16px]">
+      
         {data?.map((item, index) => (
           <button
             key={index}
             onClick={() => handleButtonClick(item.dataUrl)}
-            className="w-full py-2 px-4 text-white bg-[#217cb5] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-lg transition duration-300"
+            className="mx-[16px] py-[12px] px-[14px] bg-[#F8F8F8] text-[#1F1F25] text-regular-normal-medium font-bold-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-lg transition duration-300"
           >
-            {item.placeholder}
+            <div className='flex justify-between'><span>{item.placeholder}</span><BgImage src='/ic-arrow-right.svg' width={20} height={20}></BgImage></div>
           </button>
         ))}
-      </div>
+     
     </div>
   );
 };
