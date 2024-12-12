@@ -6,9 +6,11 @@ import { fetchAddressesList } from '../actions/fetchAddressesList';
 import { fetchAddressDetails } from '../actions/fetchAddressDetails';
 import CategoryCards from '@/components/CategoryCards';
 import { default as BgImage } from 'next/image'
-import ViewDetailsHeader from '@/components/ViewDetailsHeader';
+import StreetDetailsPageHeader from '@/components/StreetDetailsPageHeader';
+
 
 const page = async ({ searchParams }) => {
+
     const { dataUrl } = searchParams;
     const cookieStore = cookies();
     const { userDetails: { streetAddress } } = await decrypt(cookieStore.get('session')?.value);
@@ -20,10 +22,7 @@ const page = async ({ searchParams }) => {
                 height={35}
                 style={{ marginLeft: "16px" }}
                 alt="picture of ebwo logo"></BgImage></div>
-        <div className='flex flex-col ml-[16px]'>
-            <span className='text-[#63636B] text-regular-normal-medium font-normal'>{`Selected street`}</span>
-            <ViewDetailsHeader streetName={addressesDetails.streetName} />
-        </div>
+        <StreetDetailsPageHeader streetName={addressesDetails?.streetName} />
         <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
             <CategoryCards addressDetails={addressesDetails}></CategoryCards>
         </div>

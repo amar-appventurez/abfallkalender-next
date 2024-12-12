@@ -31,8 +31,7 @@ const CategoryCards = ({ addressDetails }) => {
           <div className='flex justify-between mb-2'>
             <span className="font-semiBold text-regular-normal-medium">{categoryName}</span>
             <div className='flex items-center'>
-              <span className='text-[#F47921] text-semiBold text-title-tight'>{`Add`}</span>
-              <BgImage src="/Frame.svg" width={20} height={20} alt="image of a post envelope"/>
+              <BgImage src="/bell.svg" width={20} height={20} alt="image of a post envelope"/>
             </div>
           </div>
           <div className="bg-[#F8F8F8] rounded-lg py-3 px-[14px]">

@@ -1,77 +1,65 @@
 {
-    "HomePage": {
-      "good-morning": "Guten Morgen, ",
-      "all-in-one":"All-in-one-Online-Service der Stadtverwaltung Worms",
-     "search-placeholder":"Suchen Sie hier nach Service...",
-      "functional-unit": "Funktionseinheitendienst",
-      "service-office":"Servicebüro",
-      "title": "Finden Sie Ihr Thema",
-      "description": "Aktuelle Nachrichten aus der Stadt Worms",
-      "latest-news": "Neueste Nachrichten",
-      "see-all-news": "Alle Neuigkeiten anzeigen",
-      "see-all": "Alle ansehen",
-      "my-subscription": "Mein Abonnement",
-      "popular-subscription": "Beliebtes Abonnement",
-      "subscribe": "Abonnieren",
-      "subscribed": "Abonniert",
-      "subscriber": "Abonnent",
-      "subscribers": "Abonnenten"
-    },
-    "NewsPage": {
-      "header": "Nachrichten",
-      "all": "Alle",
-      "latest-news": "Neueste Nachrichten",
-      "see-all-news": "Alle Nachrichten ansehen"
-    },
-    "ViewNews": {
-      "title": "Von der Stadt Worms"
-    },
-    "Modal": {
-      "header": "Nachrichten",
-      "modal-unsubscribed": "Erfolgreich abgemeldet!",
-      "modal-unsubscribe-message": "Sie erhalten keine Updates von",
-      "modal-close": "Schließen",
-      "modal-subscribed": "Erfolgreich abonniert!",
-      "modal-subscribe-message-1": "Sie erhalten Updates von",
-      "modal-subscribe-message-2": "Thema im Chat-Menü",
-      "modal-subscribe-open-chats": "Chat öffnen"
-    },
-    "Subscribe": {
-      "title": "Themen abonnieren",
-      "filter-explore": "Entdecken",
-      "filter-mysubscription": "Mein Abonnement",
-      "filter-popular": "Beliebt",
-      "filter-new": "Neu"
-    },
-    "BottomNavigation": {
-      "home": "Startseite",
-      "services": "Dienstleistungen",
-      "booking": "Meine Buchung"
-    },
-    "Booking":{
-      "my-bookings":"Meine Buchungen",
-      "all":"Alle",
-      "upcoming":"Demnächst",
-      "completed":"Vollendet"
-    },
-    "Services":{
-      "all": "Alle",
-      "all-lowercase": "alle",
-      "service-categories": "Dienstkategorien",
-      "pass-register": "Pass-/Registrierungssystem",
-      "fee": "Gebühren"
-    },
-    "ServiceDetails": {
-      "apply-passport": "Für einen Pass beantragen",
-      "service-details": "Dienstleistungsdetails",
-      "no-service": "Keine Dienstleistungsdetails verfügbar",
-      "select-location": "Standort auswählen"
-    },
-    "Location":{
-        "your-location": "Ihr Standort",
-        "date-time": "Ihr Datum und Ihre Uhrzeit"
-      
-    },
+  "HomePage": {
+    "select-your-street": "Wählen Sie Ihre Straße aus"
+  },
+  "StreetDetailsPage": {
+    "selected-street": "Ausgewählte Straße",
+    "show-more": "Mehr anzeigen",
+    "show-less": "Weniger anzeigen"
+  },
+  "StreetNotFoundPage": {
+    "message-1": "Ups, wir konnten Ihre Straßeninformationen nicht abrufen",
+    "message-2": "Bitte besuchen Sie die EBWO-Website für weitere Details zu den Abholterminen.",
+    "redirection-button-message": "Zur EBWO-Website gehen"
+  },
+  "ViewNews": {
+    "title": "Von der Stadt Worms"
+  },
+  "Modal": {
+    "header": "Nachrichten",
+    "modal-unsubscribed": "Erfolgreich abgemeldet!",
+    "modal-unsubscribe-message": "Sie erhalten keine Updates von",
+    "modal-close": "Schließen",
+    "modal-subscribed": "Erfolgreich abonniert!",
+    "modal-subscribe-message-1": "Sie erhalten Updates von",
+    "modal-subscribe-message-2": "Thema im Chat-Menü",
+    "modal-subscribe-open-chats": "Chat öffnen"
+  },
+  "Subscribe": {
+    "title": "Themen abonnieren",
+    "filter-explore": "Entdecken",
+    "filter-mysubscription": "Mein Abonnement",
+    "filter-popular": "Beliebt",
+    "filter-new": "Neu"
+  },
+  "BottomNavigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "booking": "Meine Buchung"
+  },
+  "Booking": {
+    "my-bookings": "Meine Buchungen",
+    "all": "Alle",
+    "upcoming": "Demnächst",
+    "completed": "Vollendet"
+  },
+  "Services": {
+    "all": "Alle",
+    "all-lowercase": "alle",
+    "service-categories": "Dienstkategorien",
+    "pass-register": "Pass-/Registrierungssystem",
+    "fee": "Gebühren"
+  },
+  "ServiceDetails": {
+    "apply-passport": "Für einen Pass beantragen",
+    "service-details": "Dienstleistungsdetails",
+    "no-service": "Keine Dienstleistungsdetails verfügbar",
+    "select-location": "Standort auswählen"
+  },
+  "Location": {
+    "your-location": "Ihr Standort",
+    "date-time": "Ihr Datum und Ihre Uhrzeit"
+  },
   "MultiStep": {
     "confirmed-message": "Termin bestätigt!",
     "confirm-line": "Ihr Termin wurde erfolgreich vereinbart.",
@@ -89,8 +77,7 @@
     "email": "E-Mail",
     "email-repeat": "E-Mail Wiederholung",
     "phone": "Telefonnummer",
-     "declaration": "Ich willige ein, dass meine personenbezogenen Daten zum Zweck der Terminbuchung und -bearbeitung von der verantwortlichen Stelle verarbeitet werden. Datenschutzhinweise zur Einwilligungserklärung & Datenschutz & BEDINGUNGEN",
+    "declaration": "Ich willige ein, dass meine personenbezogenen Daten zum Zweck der Terminbuchung und -bearbeitung von der verantwortlichen Stelle verarbeitet werden. Datenschutzhinweise zur Einwilligungserklärung & Datenschutz & BEDINGUNGEN",
     "submit": "Absenden"
   }
-  }
-  
+}

@@ -1,7 +1,9 @@
 import React from 'react'
 import { default as BgImage } from 'next/image'
 
-const loading = () => {
+
+const loading =() => {
+    // const streetDetailsTranslations= useTranslations('StreetDetailsPage')
     return (
         <div className='flex flex-col gap-4 bg-[#F8F8F8]'>
             <div className='h-[44px] w-[100%] flex flex-col justify-center'>
@@ -19,8 +21,9 @@ const loading = () => {
             </div>
             <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
                 <div className="flex flex-col gap-6 mx-4 min-w-[90%] mt-4 mb-4">
-                    {[1,2,3,4]?.map(({name}) => (
+                    {[1,2,3,4]?.map(({name},index) => (
                         <div
+                            key={index}
                             className={`rounded-lg`}
                         >
                             <div className='flex justify-between mb-2'>
@@ -33,7 +36,7 @@ const loading = () => {
                             <div className="bg-[#F8F8F8] rounded-lg py-3 px-[14px]">
                                 <div>
                                     <ul className="flex flex-col gap-2 px-[0.5rem] text-small-tight-regular font-bold-500">
-                                        {[<>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>,<>&nbsp;&nbsp;&nbsp;&nbsp;</>,<>&nbsp;&nbsp;&nbsp;&nbsp;</>,<>&nbsp;&nbsp;&nbsp;&nbsp;</>]?.map((date, index) => (
+                                        {[<>&nbsp;&nbsp;</>,<>&nbsp;&nbsp;</>,<>&nbsp;&nbsp;</>,<>&nbsp;&nbsp;</>]?.map((date, index) => (
                                             <div key={index}>
                                                 <li className="p-2 text-[#63636B] rounded-lg animate-pulse">
                                                     {date}

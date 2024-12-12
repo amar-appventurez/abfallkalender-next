@@ -6,6 +6,7 @@ import { fetchAddressesList } from '../actions/fetchAddressesList';
 import StreetNameList from '@/components/StreetNameList';
 import StreetNameNotFound from '@/components/StreetNameNotFound';
 import {default as BgImage} from 'next/image'
+import HomePageHeader from '@/components/HomePageHeader';
 const page = async () => {
     const cookieStore = cookies();
     const { userDetails: { streetAddress } } = await decrypt(cookieStore.get('session')?.value);
@@ -19,10 +20,7 @@ const page = async () => {
       height={35}
       style={{ marginLeft : "16px"}}
       alt="picture of ebwo logo"></BgImage></div>
-        <div className='flex flex-col ml-[16px]'>
-            <span className='text-[#1F1F25] text-title-main font-semiBold'>{`Waste Calender ${new Date().getFullYear()}`}</span>
-            <span className='text-[#63636B] text-regular-normal-medium font-normal'>{`Street your street`}</span>
-        </div>
+       <HomePageHeader/>
         <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
             {addressesList.length === 0 && <StreetNameNotFound/>}
             {addressesList.length > 0 && <StreetNameList addressesList={addressesList}/>}

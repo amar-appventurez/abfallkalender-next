@@ -1,25 +1,16 @@
 {
     "HomePage": {
-      "good-morning": "Good Morning, ",
-      "all-in-one":"All-in-one online service of Worms city administration",
-     "search-placeholder":"Search Service here...",
-      "functional-unit": "Functional Unit Service",
-      "service-office":"Service Office",
-      "latest-news": "Neueste Nachrichten",
-      "see-all-news": "Alle Neuigkeiten anzeigen",
-      "see-all": "Alle ansehen",
-      "my-subscription": "Mein Abonnement",
-      "popular-subscription": "Beliebtes Abonnement",
-      "subscribe": "Abonnieren",
-      "subscribed": "Abonniert",
-      "subscriber": "Abonnent",
-      "subscribers": "Abonnenten"
+      "select-your-street":"Select your street"
     },
-    "NewsPage": {
-      "header": "Nachrichten",
-      "all": "Alle",
-      "latest-news": "Neueste Nachrichten",
-      "see-all-news": "Alle Nachrichten ansehen"
+    "StreetDetailsPage": {
+     "selected-street" : "Selected street",
+     "show-more": "Show More",
+     "show-less": "Show Less"
+    },
+    "StreetNotFoundPage":{
+      "message-1": "Oops, We couldn't retrieve your street information",
+      "message-2": "Please visit the EBWO website for more details on trash pickup dates.",
+      "redirection-button-message": "Go to EBWO Website"
     },
     "ViewNews": {
       "title": "Von der Stadt Worms"
