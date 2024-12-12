@@ -37,25 +37,7 @@ const CategoryCards = ({ addressDetails }) => {
           </div>
           <div className="bg-[#F8F8F8] rounded-lg py-3 px-[14px]">
             <DateList dates={dates}/>
-            {/* <ul className="flex flex-col gap-2 px-[0.5rem]">
-              {dates?.map((date,index) => (
-                <>
-                  <li key={date} className="p-2 text-[#63636B] rounded-lg">
-                    {date}
-                  </li>
-                  {index < dates.length-1 && <hr className='text-[#E0E0E9]'/>}
-                </>
-              ))}
-            </ul> */}
           </div>
-          {/* {activeCard === id && categoryData?.map(({ id, dates }) => (
-          <div
-            key={id}
-            className={`w-full transition-all duration-100 ease-in-out`}
-          >
-           
-          </div>
-        ))} */}
         </div>
       ))}
     </div>
