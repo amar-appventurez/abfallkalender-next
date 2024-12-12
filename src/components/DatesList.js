@@ -8,7 +8,7 @@ const DateList = ({ dates }) => {
 
   return (
     <div>
-      <ul className="flex flex-col gap-2 px-[0.5rem]">
+      <ul className="flex flex-col gap-2 px-[0.5rem] text-small-tight-regular font-bold-500">
         {displayedDates?.map((date, index) => (
           <div key={date}>
             <li className="p-2 text-[#63636B] rounded-lg">
@@ -19,23 +19,23 @@ const DateList = ({ dates }) => {
         ))}
       </ul>
       
-      {/* Only show 'Show More' if there are more than 2 dates */}
+   
       {dates.length > 2 && !isExpanded && (
         <button
           className="text-blue-500 mt-2"
           onClick={() => setIsExpanded(true)}
         >
-          Show More
+          <span className='text-[#F47921] text-small-tight-regular font-bold-500'>Show More</span>
         </button>
       )}
 
-      {/* Show 'Show Less' button when the list is expanded */}
+   
       {isExpanded && (
         <button
           className="text-blue-500 mt-2"
           onClick={() => setIsExpanded(false)}
         >
-          Show Less
+             <span className='text-[#F47921] text-small-tight-regular font-bold-500'>Show Less</span>
         </button>
       )}
     </div>
