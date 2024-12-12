@@ -41,8 +41,7 @@ const getSessionToken =async () => {
 export const fetchWithAuth = async (url, options = {}) => {
     // const token = await getToken();
     const token =await getSessionToken();
-    const locale = getLocale();
-
+    const locale =await getLocale();
     // if (!token) {
     //     // // await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
     //     // //     method: "GET",

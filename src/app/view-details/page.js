@@ -15,6 +15,7 @@ const page = async ({ searchParams }) => {
     const cookieStore = cookies();
     const { userDetails: { streetAddress } } = await decrypt(cookieStore.get('session')?.value);
     const addressesDetails = await fetchAddressDetails(dataUrl);
+   
     return (<div className='flex flex-col gap-4 bg-[#F8F8F8]'>
         <div className='h-[44px] w-[100%] flex flex-col justify-center'>
             <BgImage src="/ebwo-logo.svg"
@@ -24,7 +25,7 @@ const page = async ({ searchParams }) => {
                 alt="picture of ebwo logo"></BgImage></div>
         <StreetDetailsPageHeader streetName={addressesDetails?.streetName} />
         <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
-            <CategoryCards addressDetails={addressesDetails}></CategoryCards>
+            <CategoryCards addressDetails={addressesDetails} streetUrl={dataUrl}></CategoryCards>
         </div>
     </div>)
     return (<div className='mt-12 flex flex-col items-center'>

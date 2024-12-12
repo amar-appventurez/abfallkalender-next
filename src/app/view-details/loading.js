@@ -2,7 +2,7 @@ import React from 'react'
 import { default as BgImage } from 'next/image'
 
 
-const loading =() => {
+const loading = () => {
     // const streetDetailsTranslations= useTranslations('StreetDetailsPage')
     return (
         <div className='flex flex-col gap-4 bg-[#F8F8F8]'>
@@ -21,7 +21,7 @@ const loading =() => {
             </div>
             <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
                 <div className="flex flex-col gap-6 mx-4 min-w-[90%] mt-4 mb-4">
-                    {[1,2,3,4]?.map(({name},index) => (
+                    {[1, 2, 3, 4]?.map(({ name }, index) => (
                         <div
                             key={index}
                             className={`rounded-lg`}
@@ -29,14 +29,13 @@ const loading =() => {
                             <div className='flex justify-between mb-2'>
                                 <span className="font-semiBold text-regular-normal-medium">{name}</span>
                                 <div className='flex items-center'>
-                                    <span className='text-[#F47921] text-semiBold text-title-tight'>{`Add`}</span>
-                                    <BgImage src="/Frame.svg" width={20} height={20} alt="image of a post envelope" />
+                                    <button><BgImage src={`${'/bell.svg'}`} width={20} height={20} alt="image of a post envelope" /></button>
                                 </div>
                             </div>
                             <div className="bg-[#F8F8F8] rounded-lg py-3 px-[14px]">
                                 <div>
                                     <ul className="flex flex-col gap-2 px-[0.5rem] text-small-tight-regular font-bold-500">
-                                        {[<>&nbsp;&nbsp;</>,<>&nbsp;&nbsp;</>,<>&nbsp;&nbsp;</>,<>&nbsp;&nbsp;</>]?.map((date, index) => (
+                                        {[<>&nbsp;&nbsp;</>, <>&nbsp;&nbsp;</>, <>&nbsp;&nbsp;</>, <>&nbsp;&nbsp;</>]?.map((date, index) => (
                                             <div key={index}>
                                                 <li className="p-2 text-[#63636B] rounded-lg animate-pulse">
                                                     {date}
@@ -47,14 +46,14 @@ const loading =() => {
                                     </ul>
 
 
-                                   
-                                        <button
-                                            className="text-blue-500 mt-2"
-                                           
-                                        >
-                                            <span className='text-[#F47921] text-small-tight-regular font-bold-500'>Show More</span>
-                                        </button>
-                    
+
+                                    <button
+                                        className="text-blue-500 mt-2"
+
+                                    >
+                                        <span className='text-[#F47921] text-small-tight-regular font-bold-500'>Show More</span>
+                                    </button>
+
 
 
                                 </div>

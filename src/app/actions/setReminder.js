@@ -4,18 +4,15 @@ import {Endpoints} from "../../constants/Endpoint"
 import { fetchWithAuth } from "../../utils/fetchWithAuth";
 import { redirect } from "next/navigation";
 
-  export const fetchAddressDetails = async (dataUrl) => {
-
-
-    const params = new URLSearchParams({
-      streetUrl: dataUrl
-    });
-  
-    // const url = `${Endpoints.baseUrl}/location?${params}`;
-    const url = `${Endpoints.baseUrl}/street/detail?${params}`;
+  export const setReminder = async (streetUrl, category) => {
+    const url = `${Endpoints.baseUrl}/street/reminder/`;
     try {
       const response = await fetchWithAuth(url, {
-        method: 'GET', 
+        method: 'POST',
+        body:JSON.stringify({
+            streetUrl,
+            category
+        })
         // cache: 'force-cache', // Adjust based on need
       });
 
@@ -25,16 +22,16 @@ import { redirect } from "next/navigation";
     }
   
       if (!response.ok) {
-        
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      const data = await response.json();
-      
-      return data.result;
+
+      // const data=await response.json()
+      // console.log("Request completed succesfully", data.result)
+      return true;
       
     } catch (error) {
       console.error('Fetch error:', error);
-      return [];
+      return false;
   
   }
 };
