@@ -5,7 +5,11 @@
   "StreetDetailsPage": {
     "selected-street": "Ausgewählte Straße",
     "show-more": "Mehr anzeigen",
-    "show-less": "Weniger anzeigen"
+    "show-less": "Weniger anzeigen",
+    "reminder-confirmed-message-title":"Erinnerung Aktiviert: ",
+    "reminder-removed-message-title":"Erinnerung Deaktiviert: ",
+    "reminder-confirmed-message": "Erinnerungen werden einen Tag vor dem Abholtermin gesendet.",
+    "reminder-removed-message": "Sie erhalten keine Erinnerungen zu Abholterminen mehr."
   },
   "StreetNotFoundPage": {
     "message-1": "Ups, wir konnten Ihre Straßeninformationen nicht abrufen",

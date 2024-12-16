@@ -25,7 +25,7 @@ const page = async ({ searchParams }) => {
                 alt="picture of ebwo logo"></BgImage></div>
         <StreetDetailsPageHeader streetName={addressesDetails?.streetName} />
         <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
-            <CategoryCards addressDetails={addressesDetails} streetUrl={dataUrl}></CategoryCards>
+            <CategoryCards addressDetails={addressesDetails} streetUrl={dataUrl} streetId={addressesDetails?.streetName}></CategoryCards>
         </div>
     </div>)
     return (<div className='mt-12 flex flex-col items-center'>

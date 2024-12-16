@@ -4,15 +4,18 @@ import { useRouter } from 'next/navigation';
 import {default as BgImage} from 'next/image'
 import DateList from './DatesList';
 import { setReminder } from '@/app/actions/setReminder';
+import { useTranslations } from 'next-intl';
+import { removeReminder } from '@/app/actions/removeReminder';
 
-const CategoryCards = ({ addressDetails, streetUrl }) => {
+const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
+  const streetDetailsTranslations= useTranslations('StreetDetailsPage');
   const [categoryData, setCategoryData] = useState(null);
-  const [activeCard, setActiveCard] = useState(1);
-  const router = useRouter();
-  const handleCardClick = (id) => {
-    setActiveCard(id);
-  };
-
+  
+  // const [reminderStreetUrl, setReminderStreetUrl]= useState()
+  // const [reminderCategory, setReminderCategory]= useState()
+  const [showApiMessage, setShowApiMessage] = useState(false);
+  const [apiMessage,setApiMessage]= useState();
+  const [apiMessageTitle,setApiMessageTitle]= useState();
   useEffect(() => {
    
     if (addressDetails) {
@@ -24,10 +27,43 @@ const CategoryCards = ({ addressDetails, streetUrl }) => {
     }
   }, [addressDetails])
 
-    useEffect(()=>{
-      console.log("Category data", categoryData)
-    },[categoryData])
-  console.log("Address details----", addressDetails)
+  const handleReminder= (hasReminder,category)=>{
+    // setReminderStreetUrl(streetUrl);
+    // setReminderCategory(category);
+    if(hasReminder){
+      const removeReminderFeedback=removeReminder(streetUrl,category)
+      setShowApiMessage(true);
+      if(removeReminderFeedback){
+        setApiMessage(`${streetDetailsTranslations('reminder-removed-message')}`);
+        setApiMessageTitle(`${streetDetailsTranslations('reminder-removed-message-title')}`);
+        setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = false} return _ }));
+      }else{
+        setApiMessage("Some error occured while calling reminder api");
+      }
+    }
+    else{
+      const reminderFeedback=setReminder(streetUrl,category)
+      setShowApiMessage(true);
+      if(reminderFeedback){
+        setApiMessage(`${streetDetailsTranslations('reminder-confirmed-message')}`);
+        setApiMessageTitle(`${streetDetailsTranslations('reminder-confirmed-message-title')}`)
+        setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = true} return _ }));
+      }
+      else{
+        setApiMessage("Some error occured while calling remove reminder api");
+      }
+      
+    }
+  }
+
+  useEffect(()=>{
+    if(showApiMessage){
+      setTimeout(()=>{
+        setShowApiMessage(false);
+      },2500)
+    }
+  },[showApiMessage])
+
  
   return (<>
     <div className="flex flex-col gap-6 mx-4 min-w-[90%] mt-4 mb-4">
@@ -39,7 +75,7 @@ const CategoryCards = ({ addressDetails, streetUrl }) => {
           <div className='flex justify-between mb-2'>
             <span className="font-semiBold text-regular-normal-medium">{categoryName}</span>
             <div className='flex items-center'>
-              <button onClick={()=>{ setReminder(streetUrl, id); console.log("Request sent for reminder") }}><BgImage src={`${hasReminder ? 'bell-cancelled.svg' : '/bell.svg'}`} width={20} height={20} alt="image of a post envelope"/></button>
+              <button className={`${showApiMessage && "disable"}`} onClick={()=>{ handleReminder(hasReminder,id) }}><BgImage src={`${hasReminder ? 'bell-cancelled.svg' : '/bell.svg'}`} width={20} height={20} alt="image of a post envelope"/></button>
             </div>
           </div>
           <div className="bg-[#F8F8F8] rounded-lg py-3 px-[14px]">
@@ -48,6 +84,7 @@ const CategoryCards = ({ addressDetails, streetUrl }) => {
         </div>
       ))}
     </div>
+    { showApiMessage && <div className='fixed bottom-[5vh] w-[100%] flex bg-[#000] text-white rounded-lg text-regular-normal-medium gap-1 px-[12px] py-[8px] font-semiBold'><BgImage src='/info.svg' width={24} height={24} alt="icon of information"/><div><span className='font-semiBold'>{`${apiMessageTitle}`}</span><span className='font-semiBold'>{`${apiMessage}`}</span></div></div>}
   </>
   );
 };

@@ -5,7 +5,11 @@
     "StreetDetailsPage": {
      "selected-street" : "Selected street",
      "show-more": "Show More",
-     "show-less": "Show Less"
+     "show-less": "Show Less",
+     "reminder-confirmed-message-title":"Reminder Enabled: ",
+     "reminder-removed-message-title":"Reminder Disabled: ",
+     "reminder-confirmed-message":"Reminders will be sent one day before collection date.",
+     "reminder-removed-message": "You will no longer receive reminders for collection dates."
     },
     "StreetNotFoundPage":{
       "message-1": "Oops, We couldn't retrieve your street information",
