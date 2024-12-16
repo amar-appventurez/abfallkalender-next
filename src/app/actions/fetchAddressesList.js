@@ -15,7 +15,7 @@ export const fetchAddressesList=async (streetName)=>{
 
 
   // const token=(await getUserSession())?.userDetails?.token
-    const response = await fetchWithAuth(url,{cache:'force-cache'});
+    const response = await fetchWithAuth(url);
 
     if (response.redirect) {
       // Perform the redirection

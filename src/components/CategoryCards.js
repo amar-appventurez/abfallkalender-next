@@ -10,7 +10,7 @@ import { removeReminder } from '@/app/actions/removeReminder';
 const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
   const streetDetailsTranslations= useTranslations('StreetDetailsPage');
   const [categoryData, setCategoryData] = useState(null);
-  
+  const router=useRouter()
   // const [reminderStreetUrl, setReminderStreetUrl]= useState()
   // const [reminderCategory, setReminderCategory]= useState()
   const [showApiMessage, setShowApiMessage] = useState(false);
@@ -37,6 +37,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
         setApiMessage(`${streetDetailsTranslations('reminder-removed-message')}`);
         setApiMessageTitle(`${streetDetailsTranslations('reminder-removed-message-title')}`);
         setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = false} return _ }));
+        router.refresh(`/view-details?dataUrl=${streetUrl}`);
       }else{
         setApiMessage("Some error occured while calling reminder api");
       }
@@ -48,6 +49,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
         setApiMessage(`${streetDetailsTranslations('reminder-confirmed-message')}`);
         setApiMessageTitle(`${streetDetailsTranslations('reminder-confirmed-message-title')}`)
         setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = true} return _ }));
+        router.refresh(`/view-details?dataUrl=${streetUrl}`);
       }
       else{
         setApiMessage("Some error occured while calling remove reminder api");
@@ -75,7 +77,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
           <div className='flex justify-between mb-2'>
             <span className="font-semiBold text-regular-normal-medium">{categoryName}</span>
             <div className='flex items-center'>
-              <button className={`${showApiMessage && "disable"}`} onClick={()=>{ handleReminder(hasReminder,id) }}><BgImage src={`${hasReminder ? 'bell-cancelled.svg' : '/bell.svg'}`} width={20} height={20} alt="image of a post envelope"/></button>
+              {<button className={`${showApiMessage && "disabled"}`} onClick={()=>{ handleReminder(hasReminder,id) }}><BgImage src={`${hasReminder ? 'bell-cancelled.svg' : '/bell.svg'}`} width={20} height={20} alt="image of a post envelope"/></button>}
             </div>
           </div>
           <div className="bg-[#F8F8F8] rounded-lg py-3 px-[14px]">
