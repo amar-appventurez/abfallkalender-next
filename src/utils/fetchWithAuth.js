@@ -42,6 +42,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     // const token = await getToken();
     const token =await getSessionToken();
     const locale =await getLocale();
+    console.log("locale", locale)
     // if (!token) {
     //     // // await fetch(`${process.env.NEXT_SERVER}api/clear-session`, {
     //     // //     method: "GET",
@@ -66,8 +67,8 @@ export const fetchWithAuth = async (url, options = {}) => {
 
     // Set default headers
     const headers = {
-        'Content-Type': 'application/json',
-        'Accpet-Language': locale,
+        'content-type': 'application/json',
+        'accept-language': locale,
         ...(token && { 'Authorization': `Bearer ${token}` }), // Add Authorization header if token exists
         ...options.headers, // Spread existing headers from the options
     };
