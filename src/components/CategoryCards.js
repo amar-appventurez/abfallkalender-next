@@ -61,7 +61,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
   useEffect(()=>{
     if(showApiMessage){
       setTimeout(()=>{
-        setShowApiMessage(false);
+        // setShowApiMessage(false);
       },2500)
     }
   },[showApiMessage])
@@ -86,7 +86,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
         </div>
       ))}
     </div>
-    { showApiMessage && <div className='fixed bottom-[5vh] w-[100%] flex bg-[#000] text-white rounded-lg text-regular-normal-medium gap-1 px-[12px] py-[8px] font-semiBold'><BgImage src='/info.svg' width={24} height={24} alt="icon of information"/><div><span className='font-semiBold'>{`${apiMessageTitle}`}</span><span className='font-semiBold'>{`${apiMessage}`}</span></div></div>}
+    { showApiMessage && <div className='fixed bottom-[5vh] mx-[16px] flex bg-[#000] text-white rounded-lg text-regular-normal-medium gap-[10px] px-[12px] py-[8px]'><BgImage src='/info.svg' width={24} height={24} alt="icon of information"/><div><span className='font-semiBold'>{`${apiMessageTitle}`}</span><span>{`${apiMessage}`}</span></div></div>}
   </>
   );
 };
