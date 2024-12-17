@@ -61,7 +61,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
   useEffect(()=>{
     if(showApiMessage){
       setTimeout(()=>{
-        // setShowApiMessage(false);
+        setShowApiMessage(false);
       },2500)
     }
   },[showApiMessage])
