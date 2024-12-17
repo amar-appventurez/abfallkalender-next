@@ -22,6 +22,7 @@ import { redirect } from "next/navigation";
     }
   
       if (!response.ok) {
+        return false
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 

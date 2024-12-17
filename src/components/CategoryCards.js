@@ -27,32 +27,39 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
     }
   }, [addressDetails])
 
-  const handleReminder= (hasReminder,category)=>{
+  const handleReminder= async (hasReminder,category)=>{
     // setReminderStreetUrl(streetUrl);
     // setReminderCategory(category);
     if(hasReminder){
-      const removeReminderFeedback=removeReminder(streetUrl,category)
-      setShowApiMessage(true);
+      setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = false} return _ }));
+      const removeReminderFeedback=await removeReminder(streetUrl,category)
+     
       if(removeReminderFeedback){
         setApiMessage(`${streetDetailsTranslations('reminder-removed-message')}`);
         setApiMessageTitle(`${streetDetailsTranslations('reminder-removed-message-title')}`);
-        setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = false} return _ }));
+      
         router.refresh(`/view-details?dataUrl=${streetUrl}`);
       }else{
+        setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = true} return _ }));
         setApiMessage("Some error occured while calling reminder api");
+        setApiMessageTitle("Error");
       }
+      setShowApiMessage(true);
     }
     else{
-      const reminderFeedback=setReminder(streetUrl,category)
-      setShowApiMessage(true);
+      setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = true} return _ }));
+      const reminderFeedback=await setReminder(streetUrl,category)
       if(reminderFeedback){
         setApiMessage(`${streetDetailsTranslations('reminder-confirmed-message')}`);
         setApiMessageTitle(`${streetDetailsTranslations('reminder-confirmed-message-title')}`)
-        setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = true} return _ }));
+        setShowApiMessage(true);
+        
         router.refresh(`/view-details?dataUrl=${streetUrl}`);
       }
       else{
+        setShowApiMessage(true);
         setApiMessage("Some error occured while calling remove reminder api");
+        setCategoryData(categoryData.map((_)=>{ if(_.id === category){ _.hasReminder = false} return _ }));
       }
       
     }
