@@ -16,7 +16,7 @@ const StreetNameNotFound = () => {
                 <span className='text-small-tight-regular text-center text-[#63636B]'>{`${streetNotFoundTranslations('message-2')}`}</span>
 
             </div>
-            <button onClick={() => { router.push(`${Endpoints.ebwoOrigin}/${new Date().getFullYear()}`); }} className='w-[90%] mx-[5%] mt-[119px] py-[12px] px-[77.5px] text-white bg-[#F47921] rounded-[100px]'>{`${streetNotFoundTranslations('redirection-button-message')}`}</button>
+            <button onClick={() => { router.push(`${Endpoints.ebwoOrigin}/${new Date().getFullYear()}`); }} className='w-[90%] mx-[5%] mt-[119px] py-[12px] text-white bg-[#F47921] rounded-[100px]'><div className='flex items-center justify-center gap-2'><span>{`${streetNotFoundTranslations('redirection-button-message')}`}</span><BgImage src='/ic_link.svg' width={24} height={24} alt="Image of link icon"/></div></button>
         </>)
 }
 

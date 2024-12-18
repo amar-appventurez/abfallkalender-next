@@ -1,93 +1,21 @@
 {
     "HomePage": {
-      "good-morning": "Günaydın, ",
-      "all-in-one": "Worms şehir yönetiminin her şey dahil çevrimiçi hizmeti",
-      "search-placeholder": "Burada hizmet ara...",
-      "functional-unit": "Fonksiyonel Birim Hizmeti",
-      "service-office": "Hizmet Ofisi",
-      "latest-news": "Son Haberler",
-      "see-all-news": "Tüm haberleri gör",
-      "see-all": "Hepsini gör",
-      "my-subscription": "Aboneliklerim",
-      "popular-subscription": "Popüler Abonelikler",
-      "subscribe": "Abone Ol",
-      "subscribed": "Abone Olundu",
-      "subscriber": "abone",
-      "subscribers": "aboneler"
+     "select-your-street":"Sokağınızı Seçin",
+      "waste-calender": "Atık Takvimi"
     },
-    "NewsPage": {
-      "header": "Haberler",
-      "all": "Tümü",
-      "latest-news": "Son Haberler",
-      "see-all-news": "Tüm haberleri gör"
-    },
-    "ViewNews": {
-      "title": "Worms Şehri Tarafından"
-    },
-    "Modal": {
-      "header": "Haberler",
-      "modal-unsubscribed": "Başarıyla abonelikten çıkıldı!",
-      "modal-unsubscribe-message": "Artık şu konudan güncelleme almayacaksınız:",
-      "modal-close": "Kapat",
-      "modal-subscribed": "Başarıyla abone olundu!",
-      "modal-subscribe-message-1": "Şu konudan güncelleme alacaksınız:",
-      "modal-subscribe-message-2": "konu sohbet menüsünde",
-      "modal-subscribe-open-chats": "Sohbeti Aç"
-    },
-    "Subscribe": {
-      "title": "Konulara Abone Ol",
-      "filter-explore": "Keşfet",
-      "filter-mysubscription": "Aboneliklerim",
-      "filter-popular": "Popüler",
-      "filter-new": "Yeni"
-    },
-    "BottomNavigation": {
-      "home": "Ana Sayfa",
-      "services": "Hizmetler",
-      "booking": "Rezervasyonlarım"
-    },
-    "Booking": {
-      "my-bookings": "Rezervasyonlarım",
-      "all": "Tümü",
-      "upcoming": "Yaklaşan",
-      "completed": "Tamamlanmış"
-    },
-    "Services": {
-      "all": "Tümü",
-      "all-lowercase": "tümü",
-      "service-categories": "Hizmet Kategorileri",
-      "pass-register": "Pasaport/Kayıt Sistemi",
-      "fee": "Ücretler"
-    },
-    "ServiceDetails": {
-      "apply-passport": "Pasaport Başvurusu",
-      "service-details": "Hizmet Detayları",
-      "no-service": "Hizmet detayı mevcut değil",
-      "select-location": "Lokasyon Seçin"
-    },
-    "Location": {
-      "your-location": "Lokasyonunuz",
-      "date-time": "Tarih ve zamanınız"
-    },
-    "MultiStep": {
-      "confirmed-message": "Randevu Onaylandı!",
-      "confirm-line": "Randevunuz başarıyla planlandı.",
-      "select-date-time": "Tarih ve zaman seçin",
-      "personal-details": "Kişisel Bilgiler",
-      "go-my-bookings": "Rezervasyonlarıma Git",
-      "select-slot-time": "Saat dilimini seçin",
-      "reserve": "Rezerve Et",
-      "next": "İleri",
-      "select-location": "Lokasyon Seçin"
-    },
-    "Personal": {
-      "first-name": "İsim",
-      "family-name": "Soyisim",
-      "email": "E-posta",
-      "email-repeat": "E-posta Tekrarı",
-      "phone": "Telefon No",
-      "declaration": "Rezervasyon ve randevu işleme amacıyla toplanan kişisel verilerimin sorumlu tarafça işlenmesine onay veriyorum. Onay beyanı ve Veri Koruma & KOŞULLARI hakkında bilgi",
-      "submit": "Gönder"
-    }
+    "StreetDetailsPage": {
+      "selected-street" : "Seçilen Sokak",
+      "show-more": "Daha fazla göster",
+      "show-less": "Daha Az",
+      "reminder-confirmed-message-title":"Hatırlatma Aktif: ",
+      "reminder-removed-message-title":"Hatırlatma Aktif Değil: ",
+      "reminder-confirmed-message":"Hatırlatmalar, toplama tarihinden bir gün önce gönderilecektir.",
+      "reminder-removed-message": "Toplama tarihleri için artık hatırlatma almayacaksınız."
+     },
+     "StreetNotFoundPage":{
+       "message-1": "Maalasef, Sokak bilginizi alamadık",
+       "message-2": "Çöp toplama tarihleri hakkında daha fazla bilgi için EBWO web sitesini ziyaret edin.",
+       "redirection-button-message": "EBWO Web Sitesine Git"
+     }
   }
   

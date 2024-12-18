@@ -1,6 +1,7 @@
 {
   "HomePage": {
-    "select-your-street": "Wählen Sie Ihre Straße aus"
+    "select-your-street": "Wählen Sie Ihre Straße aus",
+     "waste-calender": "Abfallkalender"
   },
   "StreetDetailsPage": {
     "selected-street": "Ausgewählte Straße",
