@@ -10,79 +10,15 @@
     "reminder-confirmed-message-title":"Erinnerung Aktiviert: ",
     "reminder-removed-message-title":"Erinnerung Deaktiviert: ",
     "reminder-confirmed-message": "Erinnerungen werden einen Tag vor dem Abholtermin gesendet.",
-    "reminder-removed-message": "Sie erhalten keine Erinnerungen zu Abholterminen mehr."
+    "reminder-removed-message": "Sie erhalten keine Erinnerungen zu Abholterminen mehr.",
+    "category-1":"Gelbe Tonne",
+    "category-2":"Altpapier",
+    "category-3":"Restabfall",
+    "category-4":"Bio-Abfälle"
   },
   "StreetNotFoundPage": {
     "message-1": "Ups, wir konnten Ihre Straßeninformationen nicht abrufen",
     "message-2": "Bitte besuchen Sie die EBWO-Website für weitere Details zu den Abholterminen.",
     "redirection-button-message": "Zur EBWO-Website gehen"
-  },
-  "ViewNews": {
-    "title": "Von der Stadt Worms"
-  },
-  "Modal": {
-    "header": "Nachrichten",
-    "modal-unsubscribed": "Erfolgreich abgemeldet!",
-    "modal-unsubscribe-message": "Sie erhalten keine Updates von",
-    "modal-close": "Schließen",
-    "modal-subscribed": "Erfolgreich abonniert!",
-    "modal-subscribe-message-1": "Sie erhalten Updates von",
-    "modal-subscribe-message-2": "Thema im Chat-Menü",
-    "modal-subscribe-open-chats": "Chat öffnen"
-  },
-  "Subscribe": {
-    "title": "Themen abonnieren",
-    "filter-explore": "Entdecken",
-    "filter-mysubscription": "Mein Abonnement",
-    "filter-popular": "Beliebt",
-    "filter-new": "Neu"
-  },
-  "BottomNavigation": {
-    "home": "Startseite",
-    "services": "Dienstleistungen",
-    "booking": "Meine Buchung"
-  },
-  "Booking": {
-    "my-bookings": "Meine Buchungen",
-    "all": "Alle",
-    "upcoming": "Demnächst",
-    "completed": "Vollendet"
-  },
-  "Services": {
-    "all": "Alle",
-    "all-lowercase": "alle",
-    "service-categories": "Dienstkategorien",
-    "pass-register": "Pass-/Registrierungssystem",
-    "fee": "Gebühren"
-  },
-  "ServiceDetails": {
-    "apply-passport": "Für einen Pass beantragen",
-    "service-details": "Dienstleistungsdetails",
-    "no-service": "Keine Dienstleistungsdetails verfügbar",
-    "select-location": "Standort auswählen"
-  },
-  "Location": {
-    "your-location": "Ihr Standort",
-    "date-time": "Ihr Datum und Ihre Uhrzeit"
-  },
-  "MultiStep": {
-    "confirmed-message": "Termin bestätigt!",
-    "confirm-line": "Ihr Termin wurde erfolgreich vereinbart.",
-    "select-date-time": "Datum und Uhrzeit auswählen",
-    "personal-details": "Persönliche Angaben",
-    "go-my-bookings": "Zu meinen Buchungen gehen",
-    "select-slot-time": "Slot-Zeit auswählen",
-    "reserve": "Reservieren",
-    "next": "Weiter",
-    "select-location": "Standort auswählen"
-  },
-  "Personal": {
-    "first-name": "Vorname",
-    "family-name": "Nachname",
-    "email": "E-Mail",
-    "email-repeat": "E-Mail Wiederholung",
-    "phone": "Telefonnummer",
-    "declaration": "Ich willige ein, dass meine personenbezogenen Daten zum Zweck der Terminbuchung und -bearbeitung von der verantwortlichen Stelle verarbeitet werden. Datenschutzhinweise zur Einwilligungserklärung & Datenschutz & BEDINGUNGEN",
-    "submit": "Absenden"
   }
 }

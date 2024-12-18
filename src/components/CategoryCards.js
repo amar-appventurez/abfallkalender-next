@@ -19,7 +19,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
   useEffect(() => {
    
     if (addressDetails) {
-      const reminderDates= addressDetails?.reminderData.length > 0  ? addressDetails?.reminderData.map(({waste_category_id})=> {return waste_category_id}) : [];
+      const reminderDates= addressDetails?.reminderData?.length > 0  ? addressDetails?.reminderData.map(({waste_category_id})=> {return waste_category_id}) : [];
       const mapper = Object.keys(addressDetails?.dates).map((key, index) => {
         return { id: index + 1, categoryName: key, dates: addressDetails?.dates[`${key}`] , hasReminder: reminderDates.includes(index+1)  }
       })
@@ -82,7 +82,7 @@ const CategoryCards = ({ addressDetails, streetUrl, streetId }) => {
           className={`rounded-lg`}
         >
           <div className='flex justify-between mb-2'>
-            <span className="font-semiBold text-regular-normal-medium">{categoryName}</span>
+            <span className="font-semiBold text-regular-normal-medium">{streetDetailsTranslations(`category-${id}`)}</span>
             <div className='flex items-center'>
               {<button className={`${showApiMessage && "disabled"}`} onClick={()=>{ handleReminder(hasReminder,id) }}><BgImage src={`${hasReminder ? 'bell-cancelled.svg' : '/bell.svg'}`} width={20} height={20} alt="image of a post envelope"/></button>}
             </div>

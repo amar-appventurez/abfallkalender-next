@@ -10,7 +10,11 @@
      "reminder-confirmed-message-title":"Reminder Enabled: ",
      "reminder-removed-message-title":"Reminder Disabled: ",
      "reminder-confirmed-message":"Reminders will be sent one day before collection date.",
-     "reminder-removed-message": "You will no longer receive reminders for collection dates."
+     "reminder-removed-message": "You will no longer receive reminders for collection dates.",
+      "category-1":"Gelbe Tonne",
+      "category-2":"Altpapier",
+      "category-3":"Restabfall",
+      "category-4":"Bio-Abfälle"
     },
     "StreetNotFoundPage":{
       "message-1": "Oops, We couldn't retrieve your street information",

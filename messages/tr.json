@@ -10,7 +10,11 @@
       "reminder-confirmed-message-title":"Hatırlatma Aktif: ",
       "reminder-removed-message-title":"Hatırlatma Aktif Değil: ",
       "reminder-confirmed-message":"Hatırlatmalar, toplama tarihinden bir gün önce gönderilecektir.",
-      "reminder-removed-message": "Toplama tarihleri için artık hatırlatma almayacaksınız."
+      "reminder-removed-message": "Toplama tarihleri için artık hatırlatma almayacaksınız.",
+      "category-1":"Gelbe Tonne",
+      "category-2":"Altpapier",
+      "category-3":"Restabfall",
+      "category-4":"Bio-Abfälle"
      },
      "StreetNotFoundPage":{
        "message-1": "Maalasef, Sokak bilginizi alamadık",
