@@ -82,13 +82,14 @@ export async function GET(request) {
         userName,
         email,
         streetAddress,
-        streetUrl
+        streetUrl: streetUrl || undefined
     };
     let redirectUrl
-    if(streetUrl === "null"){
-        redirectUrl = new URL('/home',request.url)
-    }else{
+  
+    if(streetUrl){
         redirectUrl = new URL(`/view-details?dataUrl=${streetUrl}`,request.url)
+    }else{
+        redirectUrl = new URL('/home',request.url)
     }
     // Create the session with the token
     const sessionToken = await createSession(userDetails);

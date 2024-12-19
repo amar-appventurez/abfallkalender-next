@@ -24,8 +24,8 @@ const page = async () => {
       alt="picture of ebwo logo"></BgImage></div>
        <HomePageHeader/>
         <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
-            {addressesList.length === 0 || searchStreet === ''  && <StreetNameNotFound/>}
-            {addressesList.length > 0 && searchStreet !=='' && <StreetNameList addressesList={addressesList}/>}
+            { (searchStreet == '' || addressesList.length === 0) && <StreetNameNotFound/>}
+            {addressesList.length > 0 && searchStreet != '' && <StreetNameList addressesList={addressesList}/>}
         </div>
     </div>)
     if(addressesList.length === 0){
