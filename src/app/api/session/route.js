@@ -59,7 +59,7 @@ export async function GET(request) {
     const streetAddress = searchParams.get('street_address');
     const streetUrl= searchParams.get('street_url');
     const consent = searchParams.get('consent');
- 
+   
     // if (!oauthToken) {
     //     return NextResponse.redirect('/');  // Handle OAuth failure
     // }
@@ -85,10 +85,10 @@ export async function GET(request) {
         streetUrl
     };
     let redirectUrl
-    if(streetUrl){
-        redirectUrl = new URL(`/view-details?dataUrl=${streetUrl}`,request.url)
-    }else{
+    if(streetUrl === "null"){
         redirectUrl = new URL('/home',request.url)
+    }else{
+        redirectUrl = new URL(`/view-details?dataUrl=${streetUrl}`,request.url)
     }
     // Create the session with the token
     const sessionToken = await createSession(userDetails);
