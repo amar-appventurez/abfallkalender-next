@@ -57,7 +57,7 @@ export async function GET(request) {
     const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
     const streetAddress = searchParams.get('street_address');
-
+    const streetUrl= searchParams.get('street_url');
     const consent = searchParams.get('consent');
  
     // if (!oauthToken) {
@@ -81,14 +81,18 @@ export async function GET(request) {
         token: decryptedToken,
         userName,
         email,
-        streetAddress
+        streetAddress,
+        streetUrl
     };
-    
+    let redirectUrl
+    if(streetUrl){
+        redirectUrl = new URL(`/view-details?dataUrl=${streetUrl}`,request.url)
+    }else{
+        redirectUrl = new URL('/home',request.url)
+    }
     // Create the session with the token
     const sessionToken = await createSession(userDetails);
 
-    // Set the session cookie in the response
-    const redirectUrl = new URL('/home',request.url)
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
     // response.cookies.set('session', sessionToken, {
     //     httpOnly: true,

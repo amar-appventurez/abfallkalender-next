@@ -14,6 +14,7 @@ const page = async ({ searchParams }) => {
     const { dataUrl } = searchParams;
     const cookieStore = cookies();
     const { userDetails: { streetAddress } } = await decrypt(cookieStore.get('session')?.value);
+ 
     const addressesDetails = await fetchAddressDetails(dataUrl);
    
     return (<div className='flex flex-col gap-4 bg-[#F8F8F8]'>
