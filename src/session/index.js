@@ -25,7 +25,7 @@ export async function decrypt(session) {
   }
 }
 
-export async function createSession(userDetails) {
+export async function createSession(userDetails, sameSite= false) {
   // const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); //7days
   // const session = await encrypt({ userDetails, expiresAt });
   const session = await encrypt({ userDetails });
@@ -33,7 +33,7 @@ export async function createSession(userDetails) {
   cookies().set("session", session, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", // false for localhost, true for production
-    sameSite: "lax",
+    sameSite: sameSite ? "strict" : "lax",
     path: "/",
   });
 

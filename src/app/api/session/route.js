@@ -58,7 +58,10 @@ export async function GET(request) {
     const email= searchParams.get('email')
     const streetAddress = searchParams.get('street_address');
     const streetUrl= searchParams.get('street_url');
+   
     const consent = searchParams.get('consent');
+
+    const emailVerified= searchParams.get('email_verified') ?? false;
    
     // if (!oauthToken) {
     //     return NextResponse.redirect('/');  // Handle OAuth failure
@@ -93,7 +96,7 @@ export async function GET(request) {
         redirectUrl = new URL('/home',request.url)
     }
     // Create the session with the token
-    const sessionToken = await createSession(userDetails);
+    const sessionToken = await createSession(userDetails, emailVerified);
 
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
     // response.cookies.set('session', sessionToken, {
