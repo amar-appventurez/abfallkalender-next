@@ -28,6 +28,7 @@ export async function decrypt(session) {
 export async function createSession(userDetails, sameSite= false) {
   // const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); //7days
   // const session = await encrypt({ userDetails, expiresAt });
+  console.log("Is cookies set by same site? ", sameSite)
   const session = await encrypt({ userDetails });
 
   cookies().set("session", session, {
