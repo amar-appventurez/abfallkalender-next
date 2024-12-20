@@ -38,6 +38,7 @@ const StreetNameList = ({addressesList, decryptedCookie}) => {
       street_address: streetAddress,
       street_url: url
     });
+    console.log("Street selection made: calling /api/session with updated street url:", url)
     router.push(`/api/session?${params}`)
   };
 

@@ -8,7 +8,9 @@ export default async function Root() {
   let isTokenSet=false;
   let streetUrlFound = null;
   try{
-    const {userDetails:{token, streetUrl}} =await decrypt(cookieStore.get('session')?.value);
+    const decryptedCookie=await decrypt(cookieStore.get('session')?.value);
+    console.log("Decrypted cookie in home page", decryptedCookie);
+    const {userDetails:{token, streetUrl}} = decryptedCookie;
     if(streetUrl) streetUrlFound= streetUrl;
     if(token) isTokenSet=true
   }
@@ -23,6 +25,7 @@ export default async function Root() {
   }
   
   if(streetUrlFound){
+    console.log("From home page: Redirecting to view details page with streetUrl: ",streetUrlFound)
     redirect(`/view-details?dataUrl=${streetUrlFound}`)
   }else{
     redirect('/home')
