@@ -4,11 +4,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {default as BgImage} from 'next/image';
+import { decrypt } from '@/session';
 
-const StreetNameList = ({addressesList}) => {
+const StreetNameList = ({addressesList, decryptedCookie}) => {
 
   const router = useRouter();
-
   const [data,setData] = useState(addressesList ?? null);
 
   useEffect(()=>{
@@ -18,9 +18,27 @@ const StreetNameList = ({addressesList}) => {
 
   },[addressesList])
 
-  const handleButtonClick = (url) => {
+  const handleButtonClick =(url) => {
     // Redirect to the URL when a button is clicked
-    router.push(`/view-details?dataUrl=${url}`);
+    // router.push(`/view-details?dataUrl=${url}`);
+    const {userDetails:{
+      token,
+      userName,
+      email,
+      streetAddress,
+      encrptedToken
+  }} =decryptedCookie;
+    const [given_name, family_name]= userName.split(' ');
+    const params = new URLSearchParams({
+      token: encrptedToken,
+      name: userName,
+      email,
+      given_name,
+      family_name,
+      street_address: streetAddress,
+      street_url: url
+    });
+    router.push(`/api/session?${params}`)
   };
 
   return (

@@ -54,7 +54,7 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     console.log("Request", request.url)
     const oauthToken = searchParams.get('token');
-    const userName = `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
+    const userName = searchParams.get('name') || `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
     const email= searchParams.get('email')
     const streetAddress = searchParams.get('street_address');
     const streetUrl= searchParams.get('street_url');
@@ -82,7 +82,8 @@ export async function GET(request) {
         userName,
         email,
         streetAddress,
-        streetUrl: streetUrl || undefined
+        streetUrl: streetUrl || undefined,
+        encrptedToken: oauthToken
     };
     let redirectUrl
   
