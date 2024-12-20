@@ -96,7 +96,7 @@ export async function GET(request) {
         redirectUrl = new URL('/home',request.url)
     }
     // Create the session with the token
-    const sessionToken = await createSession(userDetails, emailVerified);
+    const sessionToken = await createSession(userDetails, !emailVerified);
 
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
     // response.cookies.set('session', sessionToken, {
