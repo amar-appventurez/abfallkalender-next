@@ -30,9 +30,5 @@ export default async function Root() {
   }else{
     redirect('/home')
   }
-  
-
-  
-
    
 }
