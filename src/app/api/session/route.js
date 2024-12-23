@@ -101,6 +101,8 @@ export async function GET(request) {
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
     //for same site explicity set cookie head
     if(!emailVerified){
+
+        console.log("Explicity setting cookie header on response")
         response.cookies.set('session', sessionToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
