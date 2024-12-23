@@ -99,15 +99,18 @@ export async function GET(request) {
     const sessionToken = await createSession(userDetails, !emailVerified);
 
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
-    // response.cookies.set('session', sessionToken, {
-    //     httpOnly: true,
-    //     secure: process.env.NODE_ENV === 'production',
-    //     // secure:false,
-    //     sameSite: 'strict',
-    //     path: '/',
-    //     // expires: new Date(Date.now() +  50 * 1000) // 50 sec
-    // });
-
+    //for same site explicity set cookie head
+    if(!emailVerified){
+        response.cookies.set('session', sessionToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            // secure:false,
+            sameSite: 'strict',
+            path: '/',
+            // expires: new Date(Date.now() +  50 * 1000) // 50 sec
+        });
+    }
+    
     return response;
 }
 
