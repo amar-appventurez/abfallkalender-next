@@ -50,7 +50,7 @@ export async function createSession(userDetails, sameSite= false) {
   return session;
 }
 
-export async function updateSession() {
+export async function updateSessionWithStreetUrl(updatedStreetUrl) {
   const session = cookies().get("session").value;
   const payload = await decrypt(session);
 
@@ -58,14 +58,22 @@ export async function updateSession() {
     return null;
   }
 
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  cookies().set("session", session, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // false for localhost, true for production
-    expires: expiresAt,
-    sameSite: "lax",
-    path: "/",
-  });
+  const {userDetails:{streetUrl}}= payload;
+
+  if(updatedStreetUrl!= streetUrl){
+    payload['userDetails']['streetUrl']= updatedStreetUrl;
+    const updatedSession=await encrypt(payload)
+    cookies().set("session", updatedSession, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // false for localhost, true for production
+      // expires: expiresAt,
+      sameSite: "strict",
+      path: "/",
+    });
+  }
+
+  // const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  
 }
 
 export async function deleteSession() {

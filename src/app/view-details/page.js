@@ -1,7 +1,7 @@
 import React from 'react'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
-import { decrypt, getUserSession } from '../../session';
+import { decrypt, getUserSession, updateSessionWithStreetUrl } from '../../session';
 import { fetchAddressesList } from '../actions/fetchAddressesList';
 import { fetchAddressDetails } from '../actions/fetchAddressDetails';
 import CategoryCards from '@/components/CategoryCards';
@@ -14,8 +14,12 @@ const page = async ({ searchParams }) => {
     const { dataUrl } = searchParams;
     const cookieStore = cookies();
     const { userDetails: { streetAddress } } = await decrypt(cookieStore.get('session')?.value);
- 
+    
+    
     const addressesDetails = await fetchAddressDetails(dataUrl);
+
+    //update cookie with this street url found on the params
+    await updateSessionWithStreetUrl(dataUrl);
    
     return (<div className='flex flex-col gap-4 bg-[#F8F8F8]'>
         <div className='h-[44px] w-[100%] flex flex-col justify-center'>
