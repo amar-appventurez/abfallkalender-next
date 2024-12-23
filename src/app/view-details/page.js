@@ -19,7 +19,7 @@ const page = async ({ searchParams }) => {
     const addressesDetails = await fetchAddressDetails(dataUrl);
 
     //update cookie with this street url found on the params
-    await updateSessionWithStreetUrl(dataUrl);
+    // await updateSessionWithStreetUrl(dataUrl);
    
     return (<div className='flex flex-col gap-4 bg-[#F8F8F8]'>
         <div className='h-[44px] w-[100%] flex flex-col justify-center'>
