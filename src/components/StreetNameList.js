@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import {default as BgImage} from 'next/image';
 import { decrypt } from '@/session';
 
-const StreetNameList = ({addressesList, decryptedCookie}) => {
+const StreetNameList = ({addressesList}) => {
 
   const router = useRouter();
   const [data,setData] = useState(addressesList ?? null);
@@ -20,26 +20,7 @@ const StreetNameList = ({addressesList, decryptedCookie}) => {
 
   const handleButtonClick =(url) => {
     // Redirect to the URL when a button is clicked
-    // router.push(`/view-details?dataUrl=${url}`);
-    const {userDetails:{
-      token,
-      userName,
-      email,
-      streetAddress,
-      encrptedToken
-  }} =decryptedCookie;
-    const [given_name, family_name]= userName.split(' ');
-    const params = new URLSearchParams({
-      token: encrptedToken,
-      name: userName,
-      email,
-      given_name,
-      family_name,
-      street_address: streetAddress,
-      street_url: url
-    });
-    console.log("Street selection made: calling /api/session with updated street url:", url)
-    router.push(`/api/session?${params}`)
+    router.push(`/view-details?dataUrl=${url}`);
   };
 
   return (

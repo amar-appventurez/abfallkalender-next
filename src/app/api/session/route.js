@@ -55,28 +55,28 @@ export async function GET(request) {
     console.log("Request", request.url)
     const oauthToken = searchParams.get('token');
     const userName = searchParams.get('name') || `${searchParams.get('given_name')} ${searchParams.get('family_name')}`;
-    const email= searchParams.get('email')
+    const email = searchParams.get('email')
     const streetAddress = searchParams.get('street_address');
-    const streetUrl= searchParams.get('street_url');
-   
+    const streetUrl = searchParams.get('street_url');
+
     const consent = searchParams.get('consent');
 
-    const emailVerified= searchParams.get('email_verified') ?? false;
-   
+    const emailVerified = searchParams.get('email_verified') ?? false;
+
     // if (!oauthToken) {
     //     return NextResponse.redirect('/');  // Handle OAuth failure
     // }
-  
+
     // Use the token and user data to create a session
     // const userDetails = {
     //     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtYXIubWlzaHJhQGtvYmlsLmNvbSIsImlhdCI6MTcyODk5NTc0NiwiZXhwIjoxNzI5MDgyMTQ2fQ.362ocb-uPwsgnIKE-196-kIKlgayGG49Iu1ixcM8nV8',
     //     userName: "amar",
     //     email:"amar.m130@gmail.com"
     // };
-    if(consent && consent.toLowerCase() === 'false'){
+    if (consent && consent.toLowerCase() === 'false') {
         return NextResponse.redirect('https://www.ebwo.de/de/abfallkalender/2024');
     }
-    const decryptedToken = await decryptToken(oauthToken); 
+    const decryptedToken = await decryptToken(oauthToken);
     if (typeof decryptedToken !== 'string' || !isValidUTF8(decryptedToken)) {
         return NextResponse.json({ success: false, message: 'Invalid token format' }, { status: 400 });
     }
@@ -89,36 +89,34 @@ export async function GET(request) {
         encrptedToken: oauthToken
     };
     let redirectUrl
-  
-    if(streetUrl){
-        redirectUrl = new URL(`/view-details?dataUrl=${streetUrl}`,request.url)
-    }else{
-        redirectUrl = new URL('/home',request.url)
+
+    if (streetUrl) {
+        redirectUrl = new URL(`/view-details?dataUrl=${streetUrl}`, request.url)
+    } else {
+        redirectUrl = new URL('/home', request.url)
     }
     // Create the session with the token
     const sessionToken = await createSession(userDetails, !emailVerified);
 
     const response = NextResponse.redirect(`${redirectUrl}`);  // Redirect to homepage after successful login
     //for same site explicity set cookie head
-    if(!emailVerified){
 
-        console.log("Explicity setting cookie header on response")
-        response.cookies.set('session', sessionToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            // secure:false,
-            sameSite: 'strict',
-            path: '/',
-            // expires: new Date(Date.now() +  50 * 1000) // 50 sec
-        });
-    }
-    
+
+    // response.cookies.set('session', sessionToken, {
+    //     httpOnly: true,
+    //     secure: process.env.NODE_ENV === 'production',
+    //     // secure:false,
+    //     sameSite: 'strict',
+    //     path: '/',
+    //     // expires: new Date(Date.now() +  50 * 1000) // 50 sec
+    // });
+
     return response;
 }
 
 export async function DELETE(request) {
     // Clear cookies on logout
     cookies().delete('session')
-  
+
     return NextResponse.json({ success: true })
-  }
+}

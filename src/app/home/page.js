@@ -1,17 +1,14 @@
 import React from 'react'
 import { redirect } from 'next/navigation'
-import { cookies } from 'next/headers'
-import { decrypt, getUserSession } from '../../session';
 import { fetchAddressesList } from '../actions/fetchAddressesList';
 import StreetNameList from '@/components/StreetNameList';
 import StreetNameNotFound from '@/components/StreetNameNotFound';
 import {default as BgImage} from 'next/image'
 import HomePageHeader from '@/components/HomePageHeader';
+import { fetchUserInfo } from '../actions/fetchUserInfo';
 const page = async () => {
-    const cookieStore = cookies();
-    const decryptedCookie= await decrypt(cookieStore.get('session')?.value);
-    const { userDetails: { streetAddress } } = decryptedCookie;
-   
+    const userInfo= await fetchUserInfo();
+    const {streetAddress}= userInfo;
     const searchStreet= streetAddress.replace(/\d+$/, '').trim();
     const addressesList = searchStreet=='' ? []: await fetchAddressesList(searchStreet);
     
@@ -26,25 +23,9 @@ const page = async () => {
        <HomePageHeader/>
         <div className='bg-[#FFFFFF] rounded-t-[2.5rem]'>
             { addressesList.length === 0 && <StreetNameNotFound/>}
-            {addressesList.length > 0 && <StreetNameList addressesList={addressesList} decryptedCookie={decryptedCookie}/>}
+            {addressesList.length > 0 && <StreetNameList addressesList={addressesList} />}
         </div>
-    </div>)
-    if(addressesList.length === 0){
-        return <StreetNameNotFound></StreetNameNotFound>
-    }
-    if (addressesList.length > 0)  // add 2nd condition here backend process: parse the endpoint and check for if results ar found
-        return <StreetNameList addressesList={addressesList}/>
-
-    if (streetAddress && notFound) {
-        return (
-        <>
-            <p>StreetName could not be fetched from the ebwo website.</p>
-            <button>Navigate to EBWO website</button>
-        </>
-        )
-    }
-
-    redirect('https://www.ebwo.de/de/abfallkalender/2024')
+    </div>);
 }
 
 export default page
